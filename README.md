@@ -5,3 +5,7 @@ This is my personal website created with HTML, CSS, and JavaScript where I share
 ```diff
 https://ufo-coder.netlify.app
 ```
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
