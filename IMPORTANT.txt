@@ -1,0 +1,1 @@
+When you're copying the 'template.html' file to create a new page, remember to update the paths for CSS, JS, and other HTML files to prevent loading issues. If you're unsure about any problems, you can always open the console in your browser to check for error messages.
