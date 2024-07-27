@@ -148,8 +148,8 @@
 
     /* Tables which appear in the middle */
     --table-fg: var(--color-dark-4);
-    --table-bg: var(--color-light-3);
-    --table-bg-nth: var(--color-light-3);
+    --table-bg: var(--color-light-4);
+    --table-bg-nth: var(--color-light-4);
     --table-br: var(--color-light-5);
 
     /* Highlight text that is special */
@@ -165,7 +165,7 @@
     /* Code sections */
     --code-fg: var(--color-dark-4);
     --code-bg: var(--color-light-5);
-    --code-rb: var(--color-light-7);
+    --code-rb: var(--color-light-9);
     --code-br: var(--color-light-3);
 
     /* The footer */
@@ -219,8 +219,8 @@
 
     /* Tables which appear in the middle */
     --table-fg: var(--color-light-4);
-    --table-bg: var(--color-dark-3);
-    --table-bg-nth: var(--color-dark-3);
+    --table-bg: var(--color-dark-2);
+    --table-bg-nth: var(--color-dark-2);
     --table-br: var(--color-dark-5);
 
     /* Highlight text that is special */
@@ -235,9 +235,9 @@
 
     /* Code sections */
     --code-fg: var(--color-light-4);
-    --code-bg: var(--color-dark-4);
+    --code-bg: var(--color-dark-2);
     --code-rb: var(--color-dark-5);
-    --code-br: var(--color-dark-4);
+    --code-br: var(--color-dark-3);
 
     /* The footer */
     --footer-fg: var(--color-light-3);
