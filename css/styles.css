@@ -79,7 +79,7 @@
 
     /* Main empty background */
     --main-fg: var(--Light_3);
-    --main-bg: var(--Light_3);
+    --main-bg: var(--Light_1);
 
     /* Menu that appreas when Clicking the Hamburger menu */
     --menu-fg: var(--Light_4);
