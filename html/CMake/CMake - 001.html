@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+
+<!--
+    File: CMake - 001.html
+    Author: Saviz Mohammadi
+    Date: June 30, 2024
+    Description: This file will provide an introduction to CMake.
+    License: MIT
+-->
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>UFO_Coder - CMake</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="./../../css/reset.css">
+        <link rel="stylesheet" href="./../../css/styles.css">
+    </head>
+
+
+
+
+
+
+
+
+
+
+    <!-- Content -->
+    <body>
+        <header>
+            <h1 id="menu-h1">UFO_Coder</h1>
+
+            <button id="dark-mode-toggle">
+                <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496"><path fill="currentColor" d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" transform="translate(-8 -8)"/></svg>
+            </button>
+
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <div class="menu-icon">&#9776;</div>
+            </div>
+        </header>
+
+
+
+
+
+        <main>
+            <nav id="menu" class="menu">
+                <a href="./index.html">Home</a>
+                <a href="./html/Other/about.html">About</a>
+            </nav>
+
+
+
+
+
+            <!-- Table Of Content -->
+            <!-- ########################################################## -->
+
+            <section id="toc" class="section">
+                <h2>Table of Contents</h2>
+
+                <ul class="toc">
+                    <li><a href="#CMake">The problem</a></li>
+                    <li><a href="#">What is CMake?</a></li>
+                    <li><a href="#Resources">Recommended resources</a></li>
+                    <li><a href="#Resources">Final notes</a></li>
+                </ul>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacerSection"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- CMake -->
+            <!-- ########################################################## -->
+
+            <section id="CMake" class="section">
+                <h2>Why CMake?</h2>
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">THE PROBLEM</span><br>
+                    The majority of programmers and software developers typically begin their coding journey with an introduction to programming using languages like C/C++ and with a Hello World application. However, what often remains inadequately covered is the concept of how we can controll and instruct the underlying tools such as compilers and linkers and also the environment in which we code to create a product that is optimized to our liking.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    Most introductory programming experiences focus solely on writing code without delving into how that code is compiled into a useful target such as executables and libraries. Often, interaction with compilers, linkers, and other management systems is limited to basic command-line commands. As a result, many developers proceed to more sufficticated programming concepts and technolgies without understanding the internal workings of these processes or how to customize their environments to better suit their needs and preferences.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    As a result they often endup making some progress, but eventually endup facing issues that stem from not having enough experience on how to control these aspects. Many of us spend our time working under a dark cloud without a clear understanding of how things actually operate. We often find ourselves frustrated with tools like Visual Studio, Xcode, and other integrated environments that handle building projects and products for us. When we click that build button, we're left hoping for the best, only to be bombarded with confusing error messages that leave us scratching our heads.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    Integrated development environments (IDEs) and the underlying tools often adopt unconventional file and directory structures that can be confusing and misleading. These practices can lead to frustration as developers navigate through projects, trying to locate files or understand how the organization impacts their workflow. This lack of transparency can be incredibly frustrating and detrimental to our overall programming experience.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                   I strongly believe this approach is flawed. Understanding your development environment is crucial for effective programming. Without this understanding, you're at the mercy of tools you can't fully control or troubleshoot when things go wrong. This frustration is something I've come to despise about many programming environments. It's as if you're expected to code blindfolded, with little insight into how everything fits together.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                   Key problems and questions that frequently come up include: How to instruct the compiler and linker to turn source code into object code and subsequently link them togeter without getting nasty errors. How to enable the enivronment to find header files and symbols wihouth the need to specify the full path to them. How to integrate our own custom libraries and third-party libraries into projects withotuh having to pull our hair out. Understanding methods for packaging and distributing applications and library products. Strategies for testing frameworks and optimizing code to ensure their correctness and functinoality.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                   These are just a few things that most beginner and even intermediate programmers struggle with. And of course we cannot blame them, no one has thought us how to do these things. This lack of foundational knowledge can lead to frustration when troubleshooting errors or attempting to customize projects. It's essential for developers to grasp these concepts early on, as they form the bedrock of effective programming practices.
+                </p>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">USING BUILD TOOLS</span><br>
+                    Remembering all the arguments and commands for building a CMake project can indeed be quite challenging. To alleviate this, we have developed platform-specific command-line helper tools located in the <span class="specialText">"build_tools"</span> folder. Each platform includes a <span class="specialText">"config.json"</span> file where you can conveniently configure your build arguments. These arguments will be simply copied over to the CMake executable. Once you have customized your build settings to your preference, you can initiate the generation and build process with a single command:
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- Windows -->
+                <p>Windows (CMD)</p>
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        ./run_cmake.cmd
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- MacOS -->
+                <p>MacOS (Bash)</p>
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        bash ./run_cmake.sh
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- Linux -->
+                <p>Linux (Bash)</p>
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        bash ./run_cmake.sh
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">RUNNING TESTS</span><br>
+                    If you decided to use this template for your CMake projects, then you're in luck because running tests is built-in using the <a class="link" href="https://github.com/catchorg/Catch2" target="_blank">Catch2</a> library. However, manually executing terminal commands to instruct CMake to run tests can be cumbersome. Therefore, we've developed a convenient utility that allows you to run tests directly from the terminal with ease. This tool is included in the <span class="specialText">"build_tools"</span> folder, per each operating system. Simply navigate to the respective folder and execute the script as follows:
+                </p>
+            </section>
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacerSection"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- CMake -->
+            <!-- ########################################################## -->
+
+            <section id="CMake" class="section">
+                <h2>What is CMake?</h2>
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">THE PROBLEM</span><br>
+                    Also please do understand that this is not a full blown tutorial. For those purposes there are plenty of greate options such as these 2 books:
+
+professotianl cmake
+cmake tutorial
+
+
+I have also read other books but most of them are terrible.
+
+I am only here to give you the most important concepts and terminologies and share with you my experiences.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    The build systems within each toolchain do provide some level of abstraction, making it easier to interact with underlying tools by handling commands, arguments, and interactions on our behalf. However, developers still need to understand and be familiar with these commands and arguments to effectively communicate with the build system. Moreover, each toolchain typically employs its own distinct build system, adding to the diversity and complexity of software development environments.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    Programmers initially aimed to write software that could run on multiple systems, opening their applications to a broader audience. However, they quickly encountered a daunting challenge: each system had its own compiler, command line parameters, architectural nuances, and proprietary extensions. The resulting complexity was a headache to manage.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    Attempting to impose standardization after this chaotic diversity had already taken root proved nearly impossible. While vendors acknowledged the need for standardization in theory, they often preferred promoting their own toolchains and standards, further complicating the landscape.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                   This fragmentation led to the development of tools like CMake. CMake serves as a cross-platform build system generator designed to mitigate these issues. It enables developers to define their project's behavior and build requirements—such as compiler preferences, folder structures, and library dependencies—in a platform-agnostic manner. CMake accomplishes this by generating native build system files tailored to each target platform (e.g., Makefiles for Unix-like systems, Visual Studio project files for Windows). There's a saying in the community that humorously summarizes CMake's role: "CMake is a tool that builds the build system."
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                   My initial experience with CMake was challenging. The error messages were cryptic, and the documentation was lacking, which deterred me from using it for some time. Despite my reluctance, CMake steadily gained traction among developers until it became the de facto standard for generating C/C++ build systems.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                   CMake's developers continued to refine the tool over time, improving documentation and addressing usability issues. As I gradually became more familiar with it, I recognized its power and versatility. However, CMake remains complex and can be difficult to master. Its attempt to accommodate various build systems, C/C++ versions, and platform-specific quirks adds to its learning curve. Moreover, despite its longevity, CMake's surge in popularity happened relatively recently, leading to outdated tutorials, articles, and practices that may no longer be valid. Despite these challenges, your experience doesn't have to mirror mine. I'm here to help navigate through these complexities and minimize the headaches associated with build system management—at least as much as possible.
+                </p>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">USING BUILD TOOLS</span><br>
+                    Remembering all the arguments and commands for building a CMake project can indeed be quite challenging. To alleviate this, we have developed platform-specific command-line helper tools located in the <span class="specialText">"build_tools"</span> folder. Each platform includes a <span class="specialText">"config.json"</span> file where you can conveniently configure your build arguments. These arguments will be simply copied over to the CMake executable. Once you have customized your build settings to your preference, you can initiate the generation and build process with a single command:
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- Windows -->
+                <p>Windows (CMD)</p>
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        ./run_cmake.cmd
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- MacOS -->
+                <p>MacOS (Bash)</p>
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        bash ./run_cmake.sh
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- Linux -->
+                <p>Linux (Bash)</p>
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        bash ./run_cmake.sh
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">RUNNING TESTS</span><br>
+                    If you decided to use this template for your CMake projects, then you're in luck because running tests is built-in using the <a class="link" href="https://github.com/catchorg/Catch2" target="_blank">Catch2</a> library. However, manually executing terminal commands to instruct CMake to run tests can be cumbersome. Therefore, we've developed a convenient utility that allows you to run tests directly from the terminal with ease. This tool is included in the <span class="specialText">"build_tools"</span> folder, per each operating system. Simply navigate to the respective folder and execute the script as follows:
+                </p>
+            </section>
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacerSection"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- CMake -->
+            <!-- ########################################################## -->
+
+            <section id="CMake" class="section">
+                <h2>What is CMake?</h2>
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">THE PROBLEM</span><br>
+                    Explaining CMake can be challenging. CMake involves many interconnected elements, commands, and concepts that work together to make the whole system function correctly.
+
+Explaining each individual command and concept in isolation can make it difficult to see how they fit into the overall system. To address this, I’ve opted to structure the lessons around broader concepts rather than focusing on isolated pieces. This approach aims to provide a more cohesive understanding and facilitate meaningful progress by highlighting how these elements work together as a whole.
+
+It’s common to feel overwhelmed by the many new definitions and concepts that get thrown at you when learning CMake. However, by explaining how these elements interact with each other, you’ll gain a better grasp of the system as a whole, rather than just learning each part in isolation. This method aims to give you a more cohesive understanding of how everything works together.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    The build systems within each toolchain do provide some level of abstraction, making it easier to interact with underlying tools by handling commands, arguments, and interactions on our behalf. However, developers still need to understand and be familiar with these commands and arguments to effectively communicate with the build system. Moreover, each toolchain typically employs its own distinct build system, adding to the diversity and complexity of software development environments.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    Programmers initially aimed to write software that could run on multiple systems, opening their applications to a broader audience. However, they quickly encountered a daunting challenge: each system had its own compiler, command line parameters, architectural nuances, and proprietary extensions. The resulting complexity was a headache to manage.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    Attempting to impose standardization after this chaotic diversity had already taken root proved nearly impossible. While vendors acknowledged the need for standardization in theory, they often preferred promoting their own toolchains and standards, further complicating the landscape.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                   This fragmentation led to the development of tools like CMake. CMake serves as a cross-platform build system generator designed to mitigate these issues. It enables developers to define their project's behavior and build requirements—such as compiler preferences, folder structures, and library dependencies—in a platform-agnostic manner. CMake accomplishes this by generating native build system files tailored to each target platform (e.g., Makefiles for Unix-like systems, Visual Studio project files for Windows). There's a saying in the community that humorously summarizes CMake's role: "CMake is a tool that builds the build system."
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                   My initial experience with CMake was challenging. The error messages were cryptic, and the documentation was lacking, which deterred me from using it for some time. Despite my reluctance, CMake steadily gained traction among developers until it became the de facto standard for generating C/C++ build systems.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                   CMake's developers continued to refine the tool over time, improving documentation and addressing usability issues. As I gradually became more familiar with it, I recognized its power and versatility. However, CMake remains complex and can be difficult to master. Its attempt to accommodate various build systems, C/C++ versions, and platform-specific quirks adds to its learning curve. Moreover, despite its longevity, CMake's surge in popularity happened relatively recently, leading to outdated tutorials, articles, and practices that may no longer be valid. Despite these challenges, your experience doesn't have to mirror mine. I'm here to help navigate through these complexities and minimize the headaches associated with build system management—at least as much as possible.
+                </p>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">USING BUILD TOOLS</span><br>
+                    Remembering all the arguments and commands for building a CMake project can indeed be quite challenging. To alleviate this, we have developed platform-specific command-line helper tools located in the <span class="specialText">"build_tools"</span> folder. Each platform includes a <span class="specialText">"config.json"</span> file where you can conveniently configure your build arguments. These arguments will be simply copied over to the CMake executable. Once you have customized your build settings to your preference, you can initiate the generation and build process with a single command:
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- Windows -->
+                <p>Windows (CMD)</p>
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        ./run_cmake.cmd
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- MacOS -->
+                <p>MacOS (Bash)</p>
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        bash ./run_cmake.sh
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- Linux -->
+                <p>Linux (Bash)</p>
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+                    <code>
+                        bash ./run_cmake.sh
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">RUNNING TESTS</span><br>
+                    If you decided to use this template for your CMake projects, then you're in luck because running tests is built-in using the <a class="link" href="https://github.com/catchorg/Catch2" target="_blank">Catch2</a> library. However, manually executing terminal commands to instruct CMake to run tests can be cumbersome. Therefore, we've developed a convenient utility that allows you to run tests directly from the terminal with ease. This tool is included in the <span class="specialText">"build_tools"</span> folder, per each operating system. Simply navigate to the respective folder and execute the script as follows:
+                </p>
+            </section>
+            <!-- ########################################################## -->
+        </main>
+
+
+
+
+
+        <footer>
+            <p id="current-year" class="copy-year">Home page - </p>
+        </footer>
+
+
+
+
+
+        <button id="scrollToTopButton" class="scroll-to-top" onclick="scrollToTop()">&#9650;</button>
+
+
+
+
+
+        <script src="./../../js/theme-manager.js"></script>
+        <script src="./../../js/menu.js"></script>
+        <script src="./../../js/scroll-to-top.js"></script>
+        <script src="./../../js/copy.js"></script>
+        <script src="./../../js/date.js"></script>
+        <script src="./../../js/page-redirection.js"></script>
+    </body>
+</html>
