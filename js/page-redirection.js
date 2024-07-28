@@ -5,3 +5,8 @@ function redirectToPage(url)
 
     window.location.href = `${baseUrl}/${url}`;
 }
+
+function openLink(url)
+{
+    window.open(url, '_blank');
+}

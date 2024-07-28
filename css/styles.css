@@ -168,6 +168,12 @@
     --code-rb: var(--color-light-9);
     --code-br: var(--color-light-3);
 
+    /* Social Media buttons */
+    --button-social-fg: var(--color-dark-1);
+    --button-social-bg: transparent;
+    --button-social-fg-hover: var(--color-dark-6);
+    --button-social-bg-hover: transparent;
+
     /* The footer */
     --footer-fg: var(--color-light-3);
     --footer-bg: var(--color-dark-4);
@@ -238,6 +244,12 @@
     --code-bg: var(--color-dark-2);
     --code-rb: var(--color-dark-5);
     --code-br: var(--color-dark-3);
+
+    /* Social Media buttons */
+    --button-social-fg: var(--color-light-6);
+    --button-social-bg: transparent;
+    --button-social-fg-hover: var(--color-light-2);
+    --button-social-bg-hover: transparent;
 
     /* The footer */
     --footer-fg: var(--color-light-3);
@@ -503,6 +515,38 @@ h2
 {
     color: var(--button-fg-hover);
     background-color: var(--button-bg-hover);
+}
+
+.social-media-container
+{
+
+    display: flex;
+    justify-content: center; /* Centers items horizontally */
+    align-items: center;     /* Centers items vertically */
+    height: 64px;
+    gap: 20px;
+}
+
+.social-media-container button
+{
+    padding: 0px;
+    margin-top: 8px;
+    margin-right: 10px;
+    align-items: center;
+    width: 42px;
+    height: 42px;
+
+    color: var(--button-social-fg);
+    background: var(--button-social-bg);
+    cursor: pointer;
+    border: none;
+    transition: color 0.3s ease;
+}
+
+.social-media-container button:hover
+{
+    color: var(--button-social-fg-hover);
+    background-color: var(--button-social-bg-hover);
 }
 
 #toc

@@ -13,3 +13,15 @@ function copyCode()
 
   alert('Code copied to clipboard!');
 }
+
+
+function copyEmail()
+{
+  const email = 'savizmohammadi@yahoo.com';
+
+  // Use the Clipboard API to copy the email address
+  navigator.clipboard.writeText(email).then(() =>
+  {
+    alert('Email copied to clipboard!');
+  });
+}
