@@ -592,6 +592,13 @@ footer
     font-size: 0.95em;
 }
 
+.avatar
+{
+    vertical-align: middle;
+    width: 15%;
+    height: 15%;
+    border-radius: 15%;
+}
 
 /* Mobile adjustments */
 @media (max-width: 768px)
@@ -616,6 +623,12 @@ footer
     .toc a
     {
         padding: 0px 5px;
+    }
+
+    .avatar
+    {
+        width: 40%;
+        height: 40%;
     }
     
     /* Adjust other styles as needed */
