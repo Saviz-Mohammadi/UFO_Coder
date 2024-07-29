@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+
+<!--
+    File: CMake - 002.html
+    Author: Saviz Mohammadi
+    Date: June 30, 2024
+    Description: This file will provide instructions on how to install CMake for various platforms.
+    License: MIT
+-->
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>UFO_Coder - CMake #002</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="./../../css/reset.css">
+        <link rel="stylesheet" href="./../../css/styles.css">
+
+        <!-- Js -->
+        <script src="./../../js/theme-manager.js" defer></script>
+        <script src="./../../js/menu.js" defer></script>
+        <script src="./../../js/scroll-to-top.js" defer></script>
+        <script src="./../../js/copy.js" defer></script>
+        <script src="./../../js/date.js" defer></script>
+        <script src="./../../js/page-redirection.js" defer></script>
+    </head>
+
+
+
+
+
+
+
+
+
+
+    <!-- Content -->
+    <body>
+        <header>
+            <h1 id="menu-h1">UFO_Coder</h1>
+
+            <button id="dark-mode-toggle">
+                <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496">
+                    <path fill="currentColor" d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" transform="translate(-8 -8)"/>
+                </svg>
+            </button>
+
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <div class="menu-icon">&#9776;</div>
+            </div>
+        </header>
+
+
+
+
+
+        <main>
+            <nav id="menu" class="menu">
+                <a href="./../../index.html">Home</a>
+                <a href="./../../html/Other/about.html">About</a>
+            </nav>
+
+
+
+
+
+            <!-- Table Of Content -->
+            <!-- ########################################################## -->
+
+            <section id="toc" class="section">
+                <h2>Table of Contents</h2>
+
+                <ul class="toc">
+                    <li><a href="#Windows">Installation - Windows</a></li>
+                    <li><a href="#MacOS">Installation - MacOS</a></li>
+                    <li><a href="#Linux">Installation - Linux</a></li>
+                    <li><a href="#Previous">Chapter - Previous</a></li>
+                    <li><a href="#Next">Chapter - Next</a></li>
+                </ul>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacerSection"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Windows -->
+            <!-- ########################################################## -->
+
+            <section id="Windows" class="section">
+                <h2>Installation - Windows</h2>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span id= "CHECK-WINDOWS" class="specialText">CHECKING FOR INSTALLATION</span><br>
+                    CMake may already be installed on your system for several reasons: your operating system might come with CMake pre-installed, a software tool you installed could include CMake as a dependency, or you might have installed CMake previously and forgotten about it. Regardless of the reason, if you want to check whether CMake is installed—whether to verify an existing installation or confirm a new one—you can use the following command on Windows:
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>CMD - PowerShell</p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+
+                    <code class="language-cmd">
+                        cmake --version
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">INSTALLING CMAKE</span><br>
+                    The easiest way to install CMake on a Windows machine is to download the official installer from the <a class="link" href="https://cmake.org/download/" target="_blank">CMake download</a> page. Once downloaded, double-click the installer and follow the installation wizard to customize CMake settings according to your preferences. It is generally recommended to stick with the default settings. After completing the installation, you should be able to use CMake from the command line. To confirm that CMake is properly installed, refer back to the section of <a class="link" href="#CHECK-WINDOWS">CHECKING FOR INSTALLATION</a>.
+                </p>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacerSection"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- MacOS -->
+            <!-- ########################################################## -->
+
+            <section id="MacOS" class="section">
+                <h2>Installation - MacOS</h2>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span id= "CHECK-MACOS" class="specialText">CHECKING FOR INSTALLATION</span><br>
+                    CMake may already be installed on your system for several reasons: your operating system might come with CMake pre-installed, a software tool you installed could include CMake as a dependency, or you might have installed CMake previously and forgotten about it. Regardless of the reason, if you want to check whether CMake is installed—whether to verify an existing installation or confirm a new one—you can use the following command on MacOS:
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>Zsh - Bash</p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+
+                    <code>
+                        cmake --version
+                    </code>
+                </div>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">INSTALLING CMAKE</span><br>
+                    The easiest way to install CMake on a MacOS machine is by using the <a class="link" href="https://brew.sh/" target="_blank">Homebrew</a> package manager. First, ensure that Homebrew is installed. You can find the installation command at the top of the Homebrew homepage; here it is for your convenience:
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>Zsh - Bash</p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+
+                    <code>
+                        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    After installing Homebrew, search for a package named <span class="specialText">cmake</span>. You should find the corresponding command to download the CMake package. I also provide the command here for your convenience:
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>Zsh - Bash</p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+
+                    <code>
+                        brew install cmake
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    If you prefer not to use the Homebrew package manager, you can visit the <a class="link" href="https://cmake.org/download/" target="_blank">CMake download</a> page for alternative methods to install CMake on MacOS. Once the installation is complete, you can confirm it by referring to the <a class="link" href="#CHECK-MACOS">CHECKING FOR INSTALLATION</a> section.
+                </p>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacerSection"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Linux -->
+            <!-- ########################################################## -->
+
+            <section id="Linux" class="section">
+                <h2>Installation - Linux</h2>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">INSTALLING CMAKE</span><br>
+                    Installing CMake on a Linux-based system can be a bit challenging due to the variety of distributions, each with its own package manager. To make things easier, I’ve provided the necessary commands for the most commonly used distributions below (Please remember to update the package manager first before attempting to install CMake itself):
+                </p>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- DEBIAN/UBUNTU -->
+                <p>
+                    <span class="specialText">DEBIAN/UBUNTU</span><br>
+                    For Debian-based distributions, which use the <span class="specialText">apt</span> (<span class="specialText">Advanced Package Tool</span>) package manager, use the following command to update the package manager and install CMake simultaneously:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+
+                    <code class="language-cmd">
+                        sudo apt update && sudo apt install cmake -y
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- Fedora -->
+                <p>
+                    <span class="specialText">Fedora</span><br>
+                    For Fedora-based distributions, which use the <span class="specialText">dnf</span> (<span class="specialText">Dandified YUM</span>) package manager, use the following command to update the package manager and install CMake simultaneously:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+
+                    <code class="language-cmd">
+                        sudo dnf check-update --refresh && sudo dnf install cmake -y
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- Arch -->
+                <p>
+                    <span class="specialText">Arch</span><br>
+                    For Arch-based distributions, which use the <span class="specialText">pacman</span> package manager, use the following command to update the package manager and install CMake simultaneously:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+
+                    <code class="language-cmd">
+                        sudo pacman -Sy cmake --noconfirm
+                    </code>
+                </div>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacerSection"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Previous chapter -->
+            <!-- ########################################################## -->
+
+            <section id= "Previous" class="section card" onclick="redirectToPage('./CMake - 001.html')">
+                <h2><span class="specialText">Chapter - Previous:<br>
+                    </span> CMake - # 001 - Introduction to CMake
+                </h2>
+
+                <p>
+                    In this chapter, we will provide an introduction to the CMake Version Control System.
+                </p>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+            <!-- Next chapter -->
+            <!-- ########################################################## -->
+
+            <section id= "Next" class="section card" onclick="redirectToPage('./CMake - 003.html')">
+                <h2><span class="specialText">Chapter - Next:<br>
+                    </span> CMake - # 003 - Updating CMake
+                </h2>
+
+                <p>
+                    In this chapter, we will provide instructions for updating CMake on various platforms.
+                </p>
+            </section>
+
+            <!-- ########################################################## -->
+        </main>
+
+
+
+
+
+        <footer>
+            <p id="current-year" class="copy-year">CMake #002 - </p>
+        </footer>
+
+
+
+
+
+        <button id="scrollToTopButton" class="scroll-to-top" onclick="scrollToTop()">&#9650;</button>
+    </body>
+</html>
