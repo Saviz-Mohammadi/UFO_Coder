@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
 <!--
-    File: Git - 003.html
+    File: CMake - 003.html
     Author: Saviz Mohammadi
     Date: June 30, 2024
-    Description: This file will provide instructions on how to install Git for various platforms.
+    Description: This file will provide instructions on how to update CMake for various platforms.
     License: MIT
 -->
 
@@ -13,7 +13,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>UFO_Coder - Git #003</title>
+        <title>UFO_Coder - CMake #003</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
@@ -77,9 +77,9 @@
                 <h2>Table of Contents</h2>
 
                 <ul class="toc">
-                    <li><a href="#Windows">Updating - Windows</a></li>
-                    <li><a href="#MacOS">Updating - MacOS</a></li>
-                    <li><a href="#Linux">Updating - Linux</a></li>
+                    <li><a href="#Windows">Update - Windows</a></li>
+                    <li><a href="#MacOS">Update - MacOS</a></li>
+                    <li><a href="#Linux">Update - Linux</a></li>
                     <li><a href="#Previous">Chapter - Previous</a></li>
                     <li><a href="#Next">Chapter - Next</a></li>
                 </ul>
@@ -111,7 +111,7 @@
             <!-- ########################################################## -->
 
             <section id="Windows" class="section">
-                <h2>Updating - Windows</h2>
+                <h2>Update - Windows</h2>
 
 
                 <div class="spacerText"></div>
@@ -120,45 +120,17 @@
                 <!-- TOPIC -->
                 <!-- ############################### -->
                 <p>
-                    <span class="specialText">UPDATING GIT</span><br>
-                    Git may already be installed on your system for several reasons: your operating system might come with Git pre-installed, a software tool you installed could include Git as a dependency, or you might have installed Git previously and forgotten about it. Regardless of the reason, if you want to update Git for your Windows machine, then you can use the following commands:
+                    <span id= "CHECK-WINDOWS" class="specialText">UPDATING CMAKE</span><br>
+                    CMake may already be installed on your system for several reasons: your operating system might come with CMake pre-installed, a software tool you installed could include CMake as a dependency, or you might have installed CMake previously and forgotten about it. Regardless of the reason, if you want to to update CMake on a Windows machine, then the best way is to download a newer variation of the official installer from the <a class="link" href="https://cmake.org/download/" target="_blank">CMake download</a> page.
                 </p>
 
 
                 <div class="spacerText"></div>
 
 
-                <p>CMD - PowerShell [ <span class="specialText">If existing Git version is between 2.14.2 and 2.16.1</span> ]</p>
-
-                <div class="spacerCode"></div>
-
-                <div class="code-container">
-                    <div class="ribbon">
-                        <button class="copy-button" onclick="copyCode()">Copy</button>
-                    </div>
-
-                    <code class="language-cmd">
-                        git update
-                    </code>
-                </div>
-
-
-                <div class="spacerText"></div>
-
-
-                <p>CMD - PowerShell [ <span class="specialText">If existing Git version is greater than 2.16.1</span> ]</p>
-
-                <div class="spacerCode"></div>
-
-                <div class="code-container">
-                    <div class="ribbon">
-                        <button class="copy-button" onclick="copyCode()">Copy</button>
-                    </div>
-
-                    <code class="language-cmd">
-                        git update-git-for-windows
-                    </code>
-                </div>
+                <p>
+                    Once downloaded, double-click the installer and follow the installer wizard to update CMake. After completing the update, you should be able to use the newer CMake version from the command line.
+                </p>
             </section>
 
             <!-- ########################################################## -->
@@ -187,7 +159,7 @@
             <!-- ########################################################## -->
 
             <section id="MacOS" class="section">
-                <h2>Updating - MacOS</h2>
+                <h2>Update - MacOS</h2>
 
 
                 <div class="spacerText"></div>
@@ -196,8 +168,8 @@
                 <!-- TOPIC -->
                 <!-- ############################### -->
                 <p>
-                    <span class="specialText">UPDATING GIT</span><br>
-                    Git may already be installed on your system for several reasons: your operating system might come with Git pre-installed, a software tool you installed could include Git as a dependency, or you might have installed Git previously and forgotten about it. Regardless of the reason, if you want to update Git for your MacOS machine, then you first need to make sure that the Homebrew package manager is up to date by using the  following command:
+                    <span id= "CHECK-MACOS" class="specialText">UPDATING CMAKE</span><br>
+                    CMake may already be installed on your system for several reasons: your operating system might come with CMake pre-installed, a software tool you installed could include CMake as a dependency, or you might have installed CMake previously and forgotten about it. Regardless of the reason, if you want to update CMake for your MacOS machine, then you first need to make sure that the Homebrew package manager is up to date by using the  following command:
                 </p>
 
 
@@ -223,7 +195,7 @@
 
 
                 <p>
-                    Once the process is finished, you can update Git using the following command:
+                    Once the process is finished, you can update CMake using the following command:
                 </p>
 
 
@@ -240,7 +212,7 @@
                     </div>
 
                     <code class="language-cmd">
-                        brew upgrade git
+                        brew upgrade cmake
                     </code>
                 </div>
 
@@ -249,7 +221,7 @@
 
 
                 <p>
-                    If you’re not using the Homebrew package manager, you can also obtain newer binaries to update MacOS by visiting the <a class="link" href="https://git-scm.com/download/mac" target="_blank">Download for macOS</a> page. You can then run the installers and update Git.
+                    If you’re not using the Homebrew package manager, you can also obtain newer binaries for the macOS platform by visiting the <a class="link" href="https://cmake.org/download/" target="_blank">CMake download</a> page. You can then run the installers and update CMake.
                 </p>
             </section>
 
@@ -279,7 +251,7 @@
             <!-- ########################################################## -->
 
             <section id="Linux" class="section">
-                <h2>Updating - Linux</h2>
+                <h2>Update - Linux</h2>
 
 
                 <div class="spacerText"></div>
@@ -288,8 +260,8 @@
                 <!-- TOPIC -->
                 <!-- ############################### -->
                 <p>
-                    <span class="specialText">UPDATING GIT</span><br>
-                    Git may already be installed on your system for several reasons: your operating system might come with Git pre-installed, a software tool you installed could include Git as a dependency, or you might have installed Git previously and forgotten about it. Regardless of the reason, if you want to update Git for your Linux machine, then use the appropriate commands from the list below, depending on your distribution and package manager (Please remember to update the package manager first before attempting to update Git itself):
+                    <span class="specialText">UPDATING CMAKE</span><br>
+                    Updating CMake on a Linux-based system can be a bit challenging due to the variety of distributions, each with its own package manager. To make things easier, I’ve provided the necessary commands for the most commonly used distributions below (Please remember to update the package manager first before attempting to update CMake itself):
                 </p>
 
 
@@ -303,7 +275,7 @@
                 <!-- DEBIAN/UBUNTU -->
                 <p>
                     <span class="specialText">DEBIAN/UBUNTU</span><br>
-                    For Debian-based distributions, which use the <span class="specialText">apt</span> (<span class="specialText">Advanced Package Tool</span>) package manager, use the following command to update the package manager and Git simultaneously:
+                    For Debian-based distributions, which use the <span class="specialText">apt</span> (<span class="specialText">Advanced Package Tool</span>) package manager, use the following command to update the package manager and CMake simultaneously:
                 </p>
 
                 <div class="spacerCode"></div>
@@ -314,7 +286,7 @@
                     </div>
 
                     <code class="language-cmd">
-                        sudo apt update && sudo apt upgrade git -y
+                        sudo apt update && sudo apt upgrade cmake -y
                     </code>
                 </div>
 
@@ -325,7 +297,7 @@
                 <!-- Fedora -->
                 <p>
                     <span class="specialText">Fedora</span><br>
-                    For Fedora-based distributions, which use the <span class="specialText">dnf</span> (<span class="specialText">Dandified YUM</span>) package manager, use the following command to update the package manager and Git simultaneously:
+                    For Fedora-based distributions, which use the <span class="specialText">dnf</span> (<span class="specialText">Dandified YUM</span>) package manager, use the following command to update the package manager and CMake simultaneously:
                 </p>
 
                 <div class="spacerCode"></div>
@@ -336,7 +308,7 @@
                     </div>
 
                     <code class="language-cmd">
-                        sudo dnf check-update --refresh && sudo dnf upgrade git -y
+                        sudo dnf check-update --refresh && sudo dnf upgrade cmake -y
                     </code>
                 </div>
 
@@ -347,7 +319,7 @@
                 <!-- Arch -->
                 <p>
                     <span class="specialText">Arch</span><br>
-                    For Arch-based distributions, which use the <span class="specialText">pacman</span> package manager, use the following command to update the package manager and Git simultaneously:
+                    For Arch-based distributions, which use the <span class="specialText">pacman</span> package manager, use the following command to update the package manager and CMake simultaneously:
                 </p>
 
                 <div class="spacerCode"></div>
@@ -358,7 +330,7 @@
                     </div>
 
                     <code class="language-cmd">
-                        sudo pacman -Sy git
+                        sudo pacman -Sy cmake --noconfirm
                     </code>
                 </div>
             </section>
@@ -388,13 +360,13 @@
             <!-- Previous chapter -->
             <!-- ########################################################## -->
 
-            <section id= "Previous" class="section card" onclick="redirectToPage('./Git - 002.html')">
+            <section id= "Previous" class="section card" onclick="redirectToPage('./CMake - 002.html')">
                 <h2><span class="specialText">Chapter - Previous:<br>
-                    </span> Git - # 002 - Installing Git
+                    </span> CMake - # 002 - Installing CMake
                 </h2>
 
                 <p>
-                    In this chapter, we will provide instructions for installing Git for various platforms.
+                    In this chapter, we will provide instructions for Installing CMake for various platforms.
                 </p>
             </section>
 
@@ -404,13 +376,13 @@
             <!-- Next chapter -->
             <!-- ########################################################## -->
 
-            <section id= "Next" class="section card" onclick="redirectToPage('./Git - 004.html')">
+            <section id= "Next" class="section card" onclick="redirectToPage('./CMake - 004.html')">
                 <h2><span class="specialText">Chapter - Next:<br>
-                    </span> Git - # 004 - Unknown...
+                    </span> CMake - # 004 - Project structure
                 </h2>
 
                 <p>
-                    Unknown...
+                    In this chapter, we will provide instructions for structuring a CMake project.
                 </p>
             </section>
 
@@ -422,7 +394,7 @@
 
 
         <footer>
-            <p id="current-year" class="copy-year">Git #003 - </p>
+            <p id="current-year" class="copy-year">CMake #003 - </p>
         </footer>
 
 
