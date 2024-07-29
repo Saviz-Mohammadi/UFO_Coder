@@ -4,7 +4,7 @@
     File: Git - 001.html
     Author: Saviz Mohammadi
     Date: June 30, 2024
-    Description: This file will provide an introduction to CMake.
+    Description: This file will provide an introduction to Git.
     License: MIT
 -->
 
@@ -21,6 +21,14 @@
         <!-- CSS -->
         <link rel="stylesheet" href="./../../css/reset.css">
         <link rel="stylesheet" href="./../../css/styles.css">
+
+        <!-- Js -->
+        <script src="./../../js/theme-manager.js" defer></script>
+        <script src="./../../js/menu.js" defer></script>
+        <script src="./../../js/scroll-to-top.js" defer></script>
+        <script src="./../../js/copy.js" defer></script>
+        <script src="./../../js/date.js" defer></script>
+        <script src="./../../js/page-redirection.js" defer></script>
     </head>
 
 
@@ -70,9 +78,9 @@
 
                 <ul class="toc">
                     <li><a href="#Preface">Preface</a></li>
-                    <li><a href="#CMake">CMake</a></li>
+                    <li><a href="#Git">Git</a></li>
                     <li><a href="#Resources">Resources</a></li>
-                    <li><a href="#Next">Next chapter</a></li>
+                    <li><a href="#Next">Chapter - Next</a></li>
                 </ul>
             </section>
 
@@ -160,6 +168,7 @@
                     DVCS features multiple repositories, with each developer having their own repository and working copy. Changes made by a developer are initially reflected only in their local repository and must be pushed to the central repository to become visible to others. Similarly, updates do not automatically include changes made by others; developers need to pull those changes into their local repositories. DVCS offers several advantages over CVCS, such as faster operations, the ability to commit changes locally before pushing them to the main repository, and easier data recovery in the event of a central server failure.</li>
                 </ul>
             </section>
+
             <!-- ########################################################## -->
 
 
@@ -222,6 +231,7 @@
                    Whether you're a web developer, app developer, or any individual working with code and file modifications, Git proves to be an invaluable asset. The algorithms implemented inside Git take advantage of deep knowledge about common attributes of real source code file trees, how they are usually modified over time and what the access patterns are. This allows Git to be very performant compared to many other alternatives. Git is also local, this means that each developer can work on their own version and push the changes to a server when they wish to do so.
                 </p>
             </section>
+
             <!-- ########################################################## -->
 
 
@@ -261,6 +271,7 @@
                     Explaining Git can be challenging because it is regularly updated with new features and commands. Each update introduces additional functionalities, which can make it difficult to keep up with the latest changes. Therefore, utilizing reliable resources is crucial. The official <a class="link" href="https://git-scm.com/docs" target="_blank">Git documentation</a> is typically the best starting point. Additionally, there are several helpful books available. After exploring various options, I’ve found that <a class="link" href="https://git-scm.com/book/en/v2" target="_blank">"Pro Git"</a> is the most effective solution for gaining a thorough understanding.
                 </p>
             </section>
+
             <!-- ########################################################## -->
 
 
@@ -287,10 +298,12 @@
             <!-- ########################################################## -->
 
             <section id= "Next" class="section card" onclick="redirectToPage('./Git - 002.html')">
-                <h2><span class="specialText">Next chapter:</span> Git - # 002 - Installation and Update</h2>
+                <h2><span class="specialText">Chapter - Next:<br>
+                    </span> Git - # 002 - Installing Git
+                </h2>
 
                 <p>
-                    In this section, we will explore how to install the Git Version Control System onto various platforms and even update an existing install to keep up-to-date with the latest requirements.
+                    In this chapter, we will explore how to Install Git for various platforms.
                 </p>
             </section>
 
@@ -310,16 +323,5 @@
 
 
         <button id="scrollToTopButton" class="scroll-to-top" onclick="scrollToTop()">&#9650;</button>
-
-
-
-
-
-        <script src="./../../js/theme-manager.js" defer></script>
-        <script src="./../../js/menu.js"></script>
-        <script src="./../../js/scroll-to-top.js"></script>
-        <script src="./../../js/copy.js"></script>
-        <script src="./../../js/date.js"></script>
-        <script src="./../../js/page-redirection.js"></script>
     </body>
 </html>

@@ -1,0 +1,7 @@
+Local storage works on a per domain basis (not per page) so any HTML pages will share the same LocalStorage database as long as they are on the same domain.
+
+If you are currently developing your web application by opening websites through the filesystem ie: file://C:/Users/UserA/Documents/WWW/index.html the browser cannot detect that 2 different pages are on the same domain so it will create a new LocalStorage database for each instance.
+
+You can get around this by hosting your web application through a Local or Remote webserver that your accessing the website via http://localhost:8080/index.html or https://example.com/index.html
+
+This is why when you sometimes create a new html file or page, it will not obey the rest of the theme. This is not something to be worried about.
