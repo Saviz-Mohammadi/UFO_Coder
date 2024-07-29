@@ -4,7 +4,7 @@
     File: Git - 001.html
     Author: Saviz Mohammadi
     Date: June 30, 2024
-    Description: This file will provide an introduction to Git.
+    Description: This file will provide an introduction to CMake.
     License: MIT
 -->
 
@@ -13,7 +13,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>UFO_Coder - Git</title>
+        <title>UFO_Coder - Git #001</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
@@ -38,7 +38,9 @@
             <h1 id="menu-h1">UFO_Coder</h1>
 
             <button id="dark-mode-toggle">
-                <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496"><path fill="currentColor" d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" transform="translate(-8 -8)"/></svg>
+                <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496">
+                    <path fill="currentColor" d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" transform="translate(-8 -8)"/>
+                </svg>
             </button>
 
             <div class="menu-toggle" onclick="toggleMenu()">
@@ -52,8 +54,8 @@
 
         <main>
             <nav id="menu" class="menu">
-                <a href="./index.html">Home</a>
-                <a href="./html/Other/about.html">About</a>
+                <a href="./../../index.html">Home</a>
+                <a href="./../../html/Other/about.html">About</a>
             </nav>
 
 
@@ -67,7 +69,10 @@
                 <h2>Table of Contents</h2>
 
                 <ul class="toc">
-                    <li><a href="#Git">Git Version Control System</a></li>
+                    <li><a href="#Preface">Preface</a></li>
+                    <li><a href="#CMake">CMake</a></li>
+                    <li><a href="#Resources">Resources</a></li>
+                    <li><a href="#Next">Next chapter</a></li>
                 </ul>
             </section>
 
@@ -93,22 +98,199 @@
 
 
 
+            <!-- Preface -->
+            <!-- ########################################################## -->
+
+            <section id="Preface" class="section">
+                <h2>Preface</h2>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">OVERVIEW</span><br>
+                    Managing large software projects in today’s era is truly challenging. As developers, avoiding mistakes such as accidentally deleting files, producing error-prone code, and encountering various other issues is increasingly difficult. Furthermore, the enormous amount of daily collaboration with other developers, which can lead to conflicting ideas and codebases, adds another layer of complexity. Clearly, some form of tool is essential to effectively manage these processes.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    In the past, many developers and companies created various software and control systems to address these challenges. Some of these systems implemented regular backups to enable rollback to previous versions, but the process was often slow and cumbersome, with its own set of problems. Other systems attempted to manage collaboration issues by using file locking to prevent concurrent access. However, this approach significantly hindered productivity, as developers had to wait for files to become available once they were in use by others, leading to delays.
+                </p>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">VERSION CONTROL SYSTEMS</span><br>
+                    Version control Systems (VCS) are software tools designed to track changes made to files, particularly code modifications, throughout the development process. As software engineers often collaborate in groups dispersed across different locations, each member contributes specific functionalities or features to the project by modifying the source code. Version Control Systems facilitate efficient communication and management of these changes by recording who made the changes, what changes were made, and when they occurred.
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    Version Control Systems help teams by tracking every individual change made by each contributor and helping prevent concurrent work from conflicting. Changes made in one part of the software can be incompatible with those made by another developer working at the same time. This problem should be discovered and solved in an orderly manner without blocking the work of the rest of the team. Version Control Systems also offer the capability to revert back to previous stages of the code in case of errors such as accidental file deletion or corruption. There are 2 variations to Version Control Systems:
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <ul class="justified-list-ul">
+                    <li><span class="specialText">CENTRALIZED VERSION CONTROL SYSTEM (CVCS)</span><br>
+                    In CVCS, there exists a single repository, and each user maintains their own working copy. Users must commit their changes to the repository to make them visible to others, who can then update to see the modifications. However, CVCS has significant drawbacks, including the need for a constant network connection and the risk of data loss if the central server crashes.</li>
+
+                    <br>
+
+                    <li><span class="specialText">DISTRIBUTED VERSION CONTROL SYSTEM (DVCS)</span><br>
+                    DVCS features multiple repositories, with each developer having their own repository and working copy. Changes made by a developer are initially reflected only in their local repository and must be pushed to the central repository to become visible to others. Similarly, updates do not automatically include changes made by others; developers need to pull those changes into their local repositories. DVCS offers several advantages over CVCS, such as faster operations, the ability to commit changes locally before pushing them to the main repository, and easier data recovery in the event of a central server failure.</li>
+                </ul>
+            </section>
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacerSection"></div>
+
+
+
+
+
+
+
+
+
+
             <!-- Git -->
             <!-- ########################################################## -->
 
-            <section id= "Git" class="section card" onclick="redirectToPage('./html/Git/Git - 001.html')">
-                <h2>Git Version Control System - # 001 - Introduction</h2>
+            <section id="Git" class="section">
+                <h2>Git</h2>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">OVERVIEW</span><br>
+                    Git is a free, open-source distributed version control system tool renowned for its ability to manage projects of varying sizes efficiently and swiftly by providing aid in the management and tracking of file changes, predominantly scripts and code-related files. It does this by diligently monitoring all modifications made to your code, enabling you to save your progress as snapshots in time. Git originated from the ingenious mind of Linus Torvalds, the mastermind behind the Linux operating system kernel.
+                </p>
+
+
+                <div class="spacerText"></div>
+
 
                 <p>
-                    This is an <span class="specialText">example</span> of a section that contains a paragraph. You can copy this to write some text and content.
+                    Git was initially conceived to tackle the intricate task of managing and monitoring changes within the Linux codebase, which involved contributions from a global community of developers. Git enables you to effortlessly revert to a previously functioning version. Similarly, it facilitates the retrieval of deleted code snippets or functionalities inadvertently removed during development. These are only some of the abilities of this amazing tool.
+                </p>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">CONCLUSION</span><br>
+                   Whether you're a web developer, app developer, or any individual working with code and file modifications, Git proves to be an invaluable asset. The algorithms implemented inside Git take advantage of deep knowledge about common attributes of real source code file trees, how they are usually modified over time and what the access patterns are. This allows Git to be very performant compared to many other alternatives. Git is also local, this means that each developer can work on their own version and push the changes to a server when they wish to do so.
                 </p>
             </section>
+            <!-- ########################################################## -->
 
-            <section class="section card" onclick="redirectToPage('./html/Git/Git - 002.html')">
-                <h2>Git Version Control System - # 002 - Introduction</h2>
+
+
+
+
+
+
+
+
+
+            <div class="spacerSection"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Resources -->
+            <!-- ########################################################## -->
+
+            <section id="Resources" class="section">
+                <h2>Resources</h2>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">DOCS AND BOOKS</span><br>
+                    Explaining Git can be challenging because it is regularly updated with new features and commands. Each update introduces additional functionalities, which can make it difficult to keep up with the latest changes. Therefore, utilizing reliable resources is crucial. The official <a class="link" href="https://git-scm.com/docs" target="_blank">Git documentation</a> is typically the best starting point. Additionally, there are several helpful books available. After exploring various options, I’ve found that <a class="link" href="https://git-scm.com/book/en/v2" target="_blank">"Pro Git"</a> is the most effective solution for gaining a thorough understanding.
+                </p>
+            </section>
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacerSection"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Next chapter -->
+            <!-- ########################################################## -->
+
+            <section id= "Next" class="section card" onclick="redirectToPage('./Git - 002.html')">
+                <h2><span class="specialText">Next chapter:</span> Git - # 002 - Installation and Update</h2>
 
                 <p>
-                    This is an <span class="specialText">example</span> of a section that contains a paragraph. You can copy this to write some text and content.
+                    In this section, we will explore how to install the Git Version Control System onto various platforms and even update an existing install to keep up-to-date with the latest requirements.
                 </p>
             </section>
 
@@ -120,7 +302,7 @@
 
 
         <footer>
-            <p id="current-year" class="copy-year">Home page - </p>
+            <p id="current-year" class="copy-year">Git #001 - </p>
         </footer>
 
 
