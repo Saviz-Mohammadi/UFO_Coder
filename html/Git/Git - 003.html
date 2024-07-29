@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<!--
+    File: Git - 003.html
+    Author: Saviz Mohammadi
+    Date: June 30, 2024
+    Description: This file will provide instructions on how to install Git for various platforms.
+    License: MIT
+-->
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>UFO_Coder - Git #003</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="./../../css/reset.css">
+        <link rel="stylesheet" href="./../../css/styles.css">
+
+        <!-- Js -->
+        <script src="./../../js/theme-manager.js" defer></script>
+        <script src="./../../js/menu.js" defer></script>
+        <script src="./../../js/scroll-to-top.js" defer></script>
+        <script src="./../../js/copy.js" defer></script>
+        <script src="./../../js/date.js" defer></script>
+        <script src="./../../js/page-redirection.js" defer></script>
+    </head>
+
+
+
+
+
+
+
+
+
+
+    <!-- Content -->
+    <body>
+        <header>
+            <h1 id="menu-h1">UFO_Coder</h1>
+
+            <button id="dark-mode-toggle">
+                <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496">
+                    <path fill="currentColor" d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" transform="translate(-8 -8)"/>
+                </svg>
+            </button>
+
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <div class="menu-icon">&#9776;</div>
+            </div>
+        </header>
+
+
+
+
+
+        <main>
+            <nav id="menu" class="menu">
+                <a href="./../../index.html">Home</a>
+                <a href="./../../html/Other/about.html">About</a>
+            </nav>
+
+
+
+
+
+            <!-- Table Of Content -->
+            <!-- ########################################################## -->
+
+            <section id="toc" class="section">
+                <h2>Table of Contents</h2>
+
+                <ul class="toc">
+                    <li><a href="#Windows">Updating - Windows</a></li>
+                    <li><a href="#MacOS">Updating - MacOS</a></li>
+                    <li><a href="#Linux">Updating - Linux</a></li>
+                    <li><a href="#Previous">Chapter - Previous</a></li>
+                    <li><a href="#Next">Chapter - Next</a></li>
+                </ul>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacerSection"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Windows -->
+            <!-- ########################################################## -->
+
+            <section id="Windows" class="section">
+                <h2>Updating - Windows</h2>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">UPDATING GIT</span><br>
+                    Git may already be installed on your system for several reasons: your operating system might come with Git pre-installed, a software tool you installed could include Git as a dependency, or you might have installed Git previously and forgotten about it. Regardless of the reason, if you want to update Git for your Windows machine, then you can use the following commands:
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>CMD - PowerShell [ <span class="specialText">If existing Git version is between 2.14.2 and 2.16.1</span> ]</p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+
+                    <code class="language-cmd">
+                        git update
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>CMD - PowerShell [ <span class="specialText">If existing Git version is greater than 2.16.1</span> ]</p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+
+                    <code class="language-cmd">
+                        git update-git-for-windows
+                    </code>
+                </div>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacerSection"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- MacOS -->
+            <!-- ########################################################## -->
+
+            <section id="MacOS" class="section">
+                <h2>Updating - MacOS</h2>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">UPDATING GIT</span><br>
+                    Git may already be installed on your system for several reasons: your operating system might come with Git pre-installed, a software tool you installed could include Git as a dependency, or you might have installed Git previously and forgotten about it. Regardless of the reason, if you want to update Git for your MacOS machine, then you first need to make sure that the Homebrew package manager is up to date by using the  following command:
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>Zsh - Bash</p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+
+                    <code class="language-cmd">
+                        brew update
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>
+                    Once the process is finished, you can update git using the following command:
+                </p>
+
+
+                <div class="spacerText"></div>
+
+
+                <p>Zsh - Bash</p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+
+                    <code class="language-cmd">
+                        brew upgrade git
+                    </code>
+                </div>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacerSection"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Linux -->
+            <!-- ########################################################## -->
+
+            <section id="Linux" class="section">
+                <h2>Updating - Linux</h2>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="specialText">UPDATING GIT</span><br>
+                    Git may already be installed on your system for several reasons: your operating system might come with Git pre-installed, a software tool you installed could include Git as a dependency, or you might have installed Git previously and forgotten about it. Regardless of the reason, if you want to update Git for your Linux machine, then use the appropriate commands from the list below, depending on your distribution and package manager (Please remember to update the package manager first before attempting to update Git itself):
+                </p>
+
+
+
+
+                <div class="spacerTopic"></div>
+
+
+
+
+                <!-- DEBIAN/UBUNTU -->
+                <p>
+                    <span class="specialText">DEBIAN/UBUNTU</span><br>
+                    For Debian-based distributions, which use the <span class="specialText">apt</span> (<span class="specialText">Advanced Package Tool</span>) package manager, use the following command to update the package manager and Git simultaneously:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+
+                    <code class="language-cmd">
+                        sudo apt update && sudo apt upgrade -y git
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- Fedora -->
+                <p>
+                    <span class="specialText">Fedora</span><br>
+                    For Fedora-based distributions, which use the <span class="specialText">dnf</span> (<span class="specialText">Dandified YUM</span>) package manager, use the following command to update the package manager and Git simultaneously:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+
+                    <code class="language-cmd">
+                        sudo dnf upgrade --refresh git
+                    </code>
+                </div>
+
+
+                <div class="spacerText"></div>
+
+
+                <!-- Arch -->
+                <p>
+                    <span class="specialText">Arch</span><br>
+                    For Arch-based distributions, which use the <span class="specialText">pacman</span> package manager, use the following command to update the package manager and Git simultaneously:
+                </p>
+
+                <div class="spacerCode"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+
+                    <code class="language-cmd">
+                        sudo pacman -Syu git
+                    </code>
+                </div>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacerSection"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Previous chapter -->
+            <!-- ########################################################## -->
+
+            <section id= "Previous" class="section card" onclick="redirectToPage('./Git - 002.html')">
+                <h2><span class="specialText">Chapter - Previous:<br>
+                    </span> Git - # 002 - Installing Git
+                </h2>
+
+                <p>
+                    In this chapter, we will provide instructions for installing Git for various platforms.
+                </p>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+            <!-- Next chapter -->
+            <!-- ########################################################## -->
+
+            <section id= "Next" class="section card" onclick="redirectToPage('./Git - 004.html')">
+                <h2><span class="specialText">Chapter - Next:<br>
+                    </span> Git - # 004 - Unknown...
+                </h2>
+
+                <p>
+                    Unknown...
+                </p>
+            </section>
+
+            <!-- ########################################################## -->
+        </main>
+
+
+
+
+
+        <footer>
+            <p id="current-year" class="copy-year">Git #003 - </p>
+        </footer>
+
+
+
+
+
+        <button id="scrollToTopButton" class="scroll-to-top" onclick="scrollToTop()">&#9650;</button>
+    </body>
+</html>
