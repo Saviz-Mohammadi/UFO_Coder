@@ -456,8 +456,6 @@ h2
 
 .code-container
 {
-    overflow-x: auto;
-    
     border: 1px solid var(--code-br);
     border-radius: 5px;
     background-color: var(--code-bg);
@@ -470,7 +468,7 @@ h2
     display: flex;
     position: relative;
     justify-content: flex-end;
-    
+
     background-color: var(--code-rb);
     border-top: 4px solid var(--code-rb);
     border-radius: 5px 5px 0 0;
@@ -482,7 +480,7 @@ h2
     margin-top: 5px;
     margin-bottom: 10px;
     padding: 2px 20px;
-    
+
     color: var(--button-fg);
     background-color: var(--button-bg);
     cursor: pointer;
@@ -501,9 +499,10 @@ h2
 .code-container code
 {
     display: block;
+    overflow-x: auto;
     padding: 10px;
     margin: 0;
-    
+
     font-size: 1.15em;
     white-space: none;
 }
