@@ -96,7 +96,7 @@
 
 
 
-            <div class="spacerSection"></div>
+            <div class="spacer-section"></div>
 
 
 
@@ -114,23 +114,25 @@
                 <h2>Update - Windows</h2>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <!-- TOPIC -->
                 <!-- ############################### -->
                 <p>
-                    <span id= "CHECK-WINDOWS" class="specialText">UPDATING CMAKE</span><br>
+                    <span id= "CHECK-WINDOWS" class="highlight">UPDATING CMAKE</span><br>
                     CMake may already be installed on your system for several reasons: your operating system might come with CMake pre-installed, a software tool you installed could include CMake as a dependency, or you might have installed CMake previously and forgotten about it. Regardless of the reason, if you want to to update CMake on a Windows machine, then the best way is to download a newer variation of the official installer from the <a class="link" href="https://cmake.org/download/" target="_blank">CMake download</a> page.
                 </p>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <p>
                     Once downloaded, double-click the installer and follow the installer wizard to update CMake. After completing the update, you should be able to use the newer CMake version from the command line.
                 </p>
+                <!-- ############################### -->
+                <!-- TOPIC -->
             </section>
 
             <!-- ########################################################## -->
@@ -144,7 +146,7 @@
 
 
 
-            <div class="spacerSection"></div>
+            <div class="spacer-section"></div>
 
 
 
@@ -162,36 +164,42 @@
                 <h2>Update - MacOS</h2>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <!-- TOPIC -->
                 <!-- ############################### -->
                 <p>
-                    <span id= "CHECK-MACOS" class="specialText">UPDATING CMAKE</span><br>
+                    <span id= "CHECK-MACOS" class="highlight">UPDATING CMAKE</span><br>
                     CMake may already be installed on your system for several reasons: your operating system might come with CMake pre-installed, a software tool you installed could include CMake as a dependency, or you might have installed CMake previously and forgotten about it. Regardless of the reason, if you want to update CMake for your MacOS machine, then you first need to make sure that the Homebrew package manager is up to date by using the  following command:
                 </p>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
+                <!-- CODE -->
+                <!-- ############ -->
                 <p>Zsh - Bash</p>
 
-                <div class="spacerCode"></div>
+                <div class="spacer-code-title"></div>
 
                 <div class="code-container">
                     <div class="ribbon">
-                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
                     </div>
 
-                    <code class="language-cmd">
-                        brew update
+
+                    <code>
+                        <pre>
+<!------------------------><span>brew update</span></pre>
                     </code>
                 </div>
+                <!-- ############ -->
+                <!-- CODE -->
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <p>
@@ -199,30 +207,38 @@
                 </p>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
+                <!-- CODE -->
+                <!-- ############ -->
                 <p>Zsh - Bash</p>
 
-                <div class="spacerCode"></div>
+                <div class="spacer-code-title"></div>
 
                 <div class="code-container">
                     <div class="ribbon">
-                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
                     </div>
 
-                    <code class="language-cmd">
-                        brew upgrade cmake
+
+                    <code>
+                        <pre>
+<!------------------------><span>brew upgrade cmake</span></pre>
                     </code>
                 </div>
+                <!-- ############ -->
+                <!-- CODE -->
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <p>
                     If you’re not using the Homebrew package manager, you can also obtain newer binaries for the macOS platform by visiting the <a class="link" href="https://cmake.org/download/" target="_blank">CMake download</a> page. You can then run the installers and update CMake.
                 </p>
+                <!-- ############################### -->
+                <!-- TOPIC -->
             </section>
 
             <!-- ########################################################## -->
@@ -236,7 +252,7 @@
 
 
 
-            <div class="spacerSection"></div>
+            <div class="spacer-section"></div>
 
 
 
@@ -254,85 +270,115 @@
                 <h2>Update - Linux</h2>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <!-- TOPIC -->
                 <!-- ############################### -->
                 <p>
-                    <span class="specialText">UPDATING CMAKE</span><br>
+                    <span class="highlight">UPDATING CMAKE</span><br>
                     Updating CMake on a Linux-based system can be a bit challenging due to the variety of distributions, each with its own package manager. To make things easier, I’ve provided the necessary commands for the most commonly used distributions below (Please remember to update the package manager first before attempting to update CMake itself):
                 </p>
+                <!-- ############################### -->
+                <!-- TOPIC -->
 
 
 
 
-                <div class="spacerTopic"></div>
+
+
+                <div class="spacer-topic"></div>
 
 
 
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
 
                 <!-- DEBIAN/UBUNTU -->
                 <p>
-                    <span class="specialText">DEBIAN/UBUNTU</span><br>
-                    For Debian-based distributions, which use the <span class="specialText">apt</span> (<span class="specialText">Advanced Package Tool</span>) package manager, use the following command to update the package manager and CMake simultaneously:
+                    <span class="highlight">DEBIAN/UBUNTU</span><br>
+                    For Debian-based distributions, which use the <span class="highlight">apt</span> (<span class="highlight">Advanced Package Tool</span>) package manager, use the following command to update the package manager and CMake simultaneously:
                 </p>
 
-                <div class="spacerCode"></div>
+                <!-- CODE -->
+                <!-- ############ -->
+                <div class="spacer-code-title"></div>
 
                 <div class="code-container">
                     <div class="ribbon">
-                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
                     </div>
 
-                    <code class="language-cmd">
-                        sudo apt update && sudo apt upgrade cmake -y
+
+                    <code>
+                        <pre>
+<!------------------------><span>sudo apt update && sudo apt upgrade cmake -y</span></pre>
                     </code>
                 </div>
+                <!-- ############ -->
+                <!-- CODE -->
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <!-- Fedora -->
                 <p>
-                    <span class="specialText">Fedora</span><br>
-                    For Fedora-based distributions, which use the <span class="specialText">dnf</span> (<span class="specialText">Dandified YUM</span>) package manager, use the following command to update the package manager and CMake simultaneously:
+                    <span class="highlight">Fedora</span><br>
+                    For Fedora-based distributions, which use the <span class="highlight">dnf</span> (<span class="highlight">Dandified YUM</span>) package manager, use the following command to update the package manager and CMake simultaneously:
                 </p>
 
-                <div class="spacerCode"></div>
+                <!-- CODE -->
+                <!-- ############ -->
+                <div class="spacer-code-title"></div>
 
                 <div class="code-container">
                     <div class="ribbon">
-                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
                     </div>
 
-                    <code class="language-cmd">
-                        sudo dnf check-update --refresh && sudo dnf upgrade cmake -y
+
+                    <code>
+                        <pre>
+<!------------------------><span>sudo dnf check-update --refresh && sudo dnf upgrade cmake -y</span></pre>
                     </code>
                 </div>
+                <!-- ############ -->
+                <!-- CODE -->
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <!-- Arch -->
                 <p>
-                    <span class="specialText">Arch</span><br>
-                    For Arch-based distributions, which use the <span class="specialText">pacman</span> package manager, use the following command to update the package manager and CMake simultaneously:
+                    <span class="highlight">Arch</span><br>
+                    For Arch-based distributions, which use the <span class="highlight">pacman</span> package manager, use the following command to update the package manager and CMake simultaneously:
                 </p>
 
-                <div class="spacerCode"></div>
+                <!-- CODE -->
+                <!-- ############ -->
+                <div class="spacer-code-title"></div>
 
                 <div class="code-container">
                     <div class="ribbon">
-                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
                     </div>
 
-                    <code class="language-cmd">
-                        sudo pacman -Sy cmake --noconfirm
+
+                    <code>
+                        <pre>
+<!------------------------><span>sudo pacman -Sy cmake --noconfirm</span></pre>
                     </code>
                 </div>
+                <!-- ############ -->
+                <!-- CODE -->
+
+                <!-- ############################### -->
+                <!-- TOPIC -->
             </section>
 
             <!-- ########################################################## -->
@@ -346,7 +392,7 @@
 
 
 
-            <div class="spacerSection"></div>
+            <div class="spacer-section"></div>
 
 
 
@@ -361,7 +407,8 @@
             <!-- ########################################################## -->
 
             <section id= "Previous" class="section card" onclick="redirectToPage('./CMake - 002.html')">
-                <h2><span class="specialText">Chapter - Previous:<br>
+                <h2>
+                    <span class="highlight">Chapter - Previous:<br>
                     </span> CMake - # 002 - Installing CMake
                 </h2>
 
@@ -377,7 +424,8 @@
             <!-- ########################################################## -->
 
             <section id= "Next" class="section card" onclick="redirectToPage('./CMake - 004.html')">
-                <h2><span class="specialText">Chapter - Next:<br>
+                <h2>
+                    <span class="highlight">Chapter - Next:<br>
                     </span> CMake - # 004 - Project structure
                 </h2>
 

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<!--
+    File: Git - 004.html
+    Author: Saviz Mohammadi
+    Date: June 30, 2024
+    Description: This file will provide instructions on how configuration works in Git.
+    License: MIT
+-->
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>UFO_Coder - Git #004</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="./../../css/reset.css">
+        <link rel="stylesheet" href="./../../css/styles.css">
+
+        <!-- Js -->
+        <script src="./../../js/theme-manager.js" defer></script>
+        <script src="./../../js/menu.js" defer></script>
+        <script src="./../../js/scroll-to-top.js" defer></script>
+        <script src="./../../js/copy.js" defer></script>
+        <script src="./../../js/date.js" defer></script>
+        <script src="./../../js/page-redirection.js" defer></script>
+    </head>
+
+
+
+
+
+
+
+
+
+
+    <!-- Content -->
+    <body>
+        <header>
+            <h1 id="menu-h1">UFO_Coder</h1>
+
+            <button id="dark-mode-toggle">
+                <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 496">
+                    <path fill="currentColor" d="M8,256C8,393,119,504,256,504S504,393,504,256,393,8,256,8,8,119,8,256ZM256,440V72a184,184,0,0,1,0,368Z" transform="translate(-8 -8)"/>
+                </svg>
+            </button>
+
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <div class="menu-icon">&#9776;</div>
+            </div>
+        </header>
+
+
+
+
+
+        <main>
+            <nav id="menu" class="menu">
+                <a href="./../../index.html">Home</a>
+                <a href="./../../html/Other/about.html">About</a>
+            </nav>
+
+
+
+
+
+            <!-- Table Of Content -->
+            <!-- ########################################################## -->
+
+            <section id="toc" class="section">
+                <h2>Table of Contents</h2>
+
+                <ul class="toc">
+                    <li><a href="#Preface">Preface</a></li>
+                    <li><a href="#Architecture">Configuration file architecture</a></li>
+                    <li><a href="#Scopes">Configuration file scopes</a></li>
+                    <li><a href="#Linux">Updating - Linux</a></li>
+                    <li><a href="#Previous">Chapter - Previous</a></li>
+                    <li><a href="#Next">Chapter - Next</a></li>
+                </ul>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacer-section"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Preface -->
+            <!-- ########################################################## -->
+
+            <section id="Preface" class="section">
+                <h2>Preface</h2>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="highlight">OVERVIEW</span><br>
+                    Like any other piece of software, Git offers a specific set of configurations and settings to the programmer in order to operate optimally. In Git, a configuration file is a text file that stores preferences and settings for the Git Version Control System. These settings encompass various aspects such as user information, default behaviors for Git commands, aliases for commonly used commands, choice of editor for composing messages, and many more.
+                </p>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    There are numerous configurations you can apply to this file. If you're only interested in setting up the essential configurations to ensure Git functions smoothly without errors, focus on configuring your email, user details, and maybe even your editor. You can do this by refering to the section of ... . However, If you're aiming for a deeper understanding of Git's configuration, it's essential to familiarize yourself with the various levels of configuration that Git provides.
+                </p>
+                <!-- ############################### -->
+                <!-- TOPIC -->
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacer-section"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Architecture -->
+            <!-- ########################################################## -->
+
+            <section id="Architecture" class="section">
+                <h2>Configuration file architecture</h2>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="highlight">ARCHITECTURE</span><br>
+                    In each configuration file, settings are represented as key-value pairs. Typically, the key precedes an equal sign, followed by the corresponding value. Settings are also organized into categories to simplify finding and managing them. This is achieved by placing the category name inside double square brackets. Settings and their values are listed beneath the category and are indented to indicate their association with the group. The following is an example:
+                </p>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>Zsh - Bash</p>
+
+                <div class="spacer-code-title"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
+
+                    <code>
+                        <pre class="enable-line-numbers">
+<!------------------------><span>[user]</span>
+<!------------------------><span>   name = UFO_Coder</span>
+<!------------------------><span>   email = UFO_Coder@email.com</span>
+<!---------------------></pre>
+                    </code>
+                </div>
+                <!-- ############################### -->
+                <!-- TOPIC -->
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacer-section"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Scopes -->
+            <!-- ########################################################## -->
+
+            <section id="Scopes" class="section">
+                <h2>Configuration file scopes</h2>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span class="highlight">SCOPE LEVELS</span><br>
+                    As mentioned earlier, Git stores configuration settings in a text file, where each setting is represented as a pair of values, typically with the setting preceding an equal sign and followed by the corresponding value. However, it's important to note that Git can have multiple levels of configuration files, and depending on their placement, certain settings take precedence over others. Here are the three situations for a Git configuration file:
+                </p>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <!-- CODE -->
+                <!-- ############ -->
+                <p>Zsh - Bash</p>
+
+                <div class="spacer-code-title"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
+
+
+                    <code>
+                        <pre class="enable-line-numbers">
+<!------------------------><span>[user]</span>
+<!------------------------><span>Something</span></pre>
+                    </code>
+                </div>
+                <!-- ############ -->
+                <!-- CODE -->
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    Once the process is finished, you can update Git using the following command:
+                </p>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>Zsh - Bash</p>
+
+                <div class="spacer-code-title"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                    </div>
+
+                    <code class="language-cmd">
+                        brew upgrade git
+                    </code>
+                </div>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    If you’re not using the Homebrew package manager, you can also obtain newer binaries to update MacOS by visiting the <a class="link" href="https://git-scm.com/download/mac" target="_blank">Download for macOS</a> page. You can then run the installers and update Git.
+                </p>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacer-section"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Previous chapter -->
+            <!-- ########################################################## -->
+
+            <section id= "Previous" class="section card" onclick="redirectToPage('./Git - 002.html')">
+                <h2><span class="highlight">Chapter - Previous:<br>
+                    </span> Git - # 003 - Installing Git
+                </h2>
+
+                <p>
+                    In this chapter, we will provide instructions for installing Git for various platforms.
+                </p>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+            <!-- Next chapter -->
+            <!-- ########################################################## -->
+
+            <section id= "Next" class="section card" onclick="redirectToPage('./Git - 004.html')">
+                <h2><span class="highlight">Chapter - Next:<br>
+                    </span> Git - # 005 - Unknown...
+                </h2>
+
+                <p>
+                    Unknown...
+                </p>
+            </section>
+
+            <!-- ########################################################## -->
+        </main>
+
+
+
+
+
+        <footer>
+            <p id="current-year" class="copy-year">Git #004 - </p>
+        </footer>
+
+
+
+
+
+        <button id="scrollToTopButton" class="scroll-to-top" onclick="scrollToTop()">&#9650;</button>
+    </body>
+</html>

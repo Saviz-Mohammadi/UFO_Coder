@@ -96,7 +96,7 @@
 
 
 
-            <div class="spacerSection"></div>
+            <div class="spacer-section"></div>
 
 
 
@@ -114,38 +114,51 @@
                 <h2>Installation - Windows</h2>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <!-- TOPIC -->
                 <!-- ############################### -->
                 <p>
-                    <span id= "CHECK-WINDOWS" class="specialText">CHECKING FOR INSTALLATION</span><br>
+                    <span id= "CHECK-WINDOWS" class="highlight">CHECKING FOR INSTALLATION</span><br>
                     Git may already be installed on your system for several reasons: your operating system might come with Git pre-installed, a software tool you installed could include Git as a dependency, or you might have installed Git previously and forgotten about it. Regardless of the reason, if you want to check whether Git is installed—whether to verify an existing installation or confirm a new one—you can use the following command on Windows:
                 </p>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
+                <!-- CODE -->
+                <!-- ############ -->
                 <p>CMD - PowerShell</p>
 
-                <div class="spacerCode"></div>
+                <div class="spacer-code-title"></div>
 
                 <div class="code-container">
                     <div class="ribbon">
-                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
                     </div>
 
-                    <code class="language-cmd">
-                        git --version
+
+                    <code>
+                        <pre>
+<!------------------------><span>git --version</span></pre>
                     </code>
                 </div>
+                <!-- ############ -->
+                <!-- CODE -->
+
+                <!-- ############################### -->
+                <!-- TOPIC -->
 
 
 
 
-                <div class="spacerTopic"></div>
+
+
+                <div class="spacer-topic"></div>
+
+
 
 
 
@@ -153,9 +166,11 @@
                 <!-- TOPIC -->
                 <!-- ############################### -->
                 <p>
-                    <span class="specialText">INSTALLING GIT</span><br>
+                    <span class="highlight">INSTALLING GIT</span><br>
                     The easiest way to install Git on a Windows machine is to download the official installer from the <a class="link" href="https://git-scm.com/download/win" target="_blank">Download for Windows</a> page. Once downloaded, double-click the installer and follow the installation wizard to customize Git settings according to your preferences. It is generally recommended to stick with the default settings. After completing the installation, you should be able to use Git from the command line. To confirm that Git is properly installed, refer back to the section of <a class="link" href="#CHECK-WINDOWS">CHECKING FOR INSTALLATION</a>.
                 </p>
+                <!-- ############################### -->
+                <!-- TOPIC -->
             </section>
 
             <!-- ########################################################## -->
@@ -169,7 +184,7 @@
 
 
 
-            <div class="spacerSection"></div>
+            <div class="spacer-section"></div>
 
 
 
@@ -187,38 +202,51 @@
                 <h2>Installation - MacOS</h2>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <!-- TOPIC -->
                 <!-- ############################### -->
                 <p>
-                    <span id= "CHECK-MACOS" class="specialText">CHECKING FOR INSTALLATION</span><br>
+                    <span id= "CHECK-MACOS" class="highlight">CHECKING FOR INSTALLATION</span><br>
                     Git may already be installed on your system for several reasons: your operating system might come with Git pre-installed, a software tool you installed could include Git as a dependency, or you might have installed Git previously and forgotten about it. Regardless of the reason, if you want to check whether Git is installed—whether to verify an existing installation or confirm a new one—you can use the following command on MacOS:
                 </p>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
+                <!-- CODE -->
+                <!-- ############ -->
                 <p>Zsh - Bash</p>
 
-                <div class="spacerCode"></div>
+                <div class="spacer-code-title"></div>
 
                 <div class="code-container">
                     <div class="ribbon">
-                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
                     </div>
 
+
                     <code>
-                        git --version
+                        <pre>
+<!------------------------><span>git --version</span></pre>
                     </code>
                 </div>
+                <!-- ############ -->
+                <!-- CODE -->
+
+                <!-- ############################### -->
+                <!-- TOPIC -->
 
 
 
 
-                <div class="spacerTopic"></div>
+
+
+                <div class="spacer-topic"></div>
+
+
 
 
 
@@ -226,61 +254,75 @@
                 <!-- TOPIC -->
                 <!-- ############################### -->
                 <p>
-                    <span class="specialText">INSTALLING GIT</span><br>
+                    <span class="highlight">INSTALLING GIT</span><br>
                     The easiest way to install Git on a MacOS machine is by using the <a class="link" href="https://brew.sh/" target="_blank">Homebrew</a> package manager. First, ensure that Homebrew is installed. You can find the installation command at the top of the Homebrew homepage; here it is for your convenience:
                 </p>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
+                <!-- CODE -->
+                <!-- ############ -->
                 <p>Zsh - Bash</p>
 
-                <div class="spacerCode"></div>
+                <div class="spacer-code-title"></div>
 
                 <div class="code-container">
                     <div class="ribbon">
-                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
                     </div>
 
+
                     <code>
-                        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+                        <pre>
+<!------------------------><span>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</span></pre>
                     </code>
                 </div>
+                <!-- ############ -->
+                <!-- CODE -->
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <p>
-                    After installing Homebrew, search for a package named <span class="specialText">git</span>. You should find the corresponding command to download the Git package. I also provide the command here for your convenience:
+                    After installing Homebrew, search for a package named <span class="highlight">git</span>. You should find the corresponding command to download the Git package. I also provide the command here for your convenience:
                 </p>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
+                <!-- CODE -->
+                <!-- ############ -->
                 <p>Zsh - Bash</p>
 
-                <div class="spacerCode"></div>
+                <div class="spacer-code-title"></div>
 
                 <div class="code-container">
                     <div class="ribbon">
-                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
                     </div>
 
+
                     <code>
-                        brew install git
+                        <pre>
+<!------------------------><span>brew install git</span></pre>
                     </code>
                 </div>
+                <!-- ############ -->
+                <!-- CODE -->
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <p>
                     If you prefer not to use the Homebrew package manager, you can visit the <a class="link" href="https://git-scm.com/download/mac" target="_blank">Download for macOS</a> page for alternative methods to install Git on MacOS. Once the installation is complete, you can confirm it by referring to the <a class="link" href="#CHECK-MACOS">CHECKING FOR INSTALLATION</a> section.
                 </p>
+                <!-- ############################### -->
+                <!-- TOPIC -->
             </section>
 
             <!-- ########################################################## -->
@@ -294,7 +336,7 @@
 
 
 
-            <div class="spacerSection"></div>
+            <div class="spacer-section"></div>
 
 
 
@@ -312,38 +354,51 @@
                 <h2>Installation - Linux</h2>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <!-- TOPIC -->
                 <!-- ############################### -->
                 <p>
-                    <span id= "CHECK-LINUX" class="specialText">CHECKING FOR INSTALLATION</span><br>
+                    <span id= "CHECK-LINUX" class="highlight">CHECKING FOR INSTALLATION</span><br>
                     Git may already be installed on your system for several reasons: your operating system might come with Git pre-installed, a software tool you installed could include Git as a dependency, or you might have installed Git previously and forgotten about it. Regardless of the reason, if you want to check whether Git is installed—whether to verify an existing installation or confirm a new one—you can use the following command on Linux:
                 </p>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
+                <!-- CODE -->
+                <!-- ############ -->
                 <p>Bash</p>
 
-                <div class="spacerCode"></div>
+                <div class="spacer-code-title"></div>
 
                 <div class="code-container">
                     <div class="ribbon">
-                        <button class="copy-button" onclick="copyCode()">Copy</button>
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
                     </div>
 
+
                     <code>
-                        git --version
+                        <pre>
+<!------------------------><span>git --version</span></pre>
                     </code>
                 </div>
+                <!-- ############ -->
+                <!-- CODE -->
+
+                <!-- ############################### -->
+                <!-- TOPIC -->
 
 
 
 
-                <div class="spacerTopic"></div>
+
+
+                <div class="spacer-topic"></div>
+
+
 
 
 
@@ -351,9 +406,11 @@
                 <!-- TOPIC -->
                 <!-- ############################### -->
                 <p>
-                    <span class="specialText">INSTALLING GIT</span><br>
+                    <span class="highlight">INSTALLING GIT</span><br>
                     The best way to install Git on a Linux machine is by using the native package manager specific to your distribution. Given the diversity of Linux distributions, each with its own package manager and installation command, it's impractical to list every command here. Fortunately, the <a class="link" href="https://git-scm.com/download/linux" target="_blank">Download for Linux and Unix</a> page provides a comprehensive list of popular distributions along with their respective package managers and installation commands. Once the installation is complete, you can confirm it by referring to the <a class="link" href="#CHECK-LINUX">CHECKING FOR INSTALLATION</a> section.
                 </p>
+                <!-- ############################### -->
+                <!-- TOPIC -->
             </section>
 
             <!-- ########################################################## -->
@@ -367,7 +424,7 @@
 
 
 
-            <div class="spacerSection"></div>
+            <div class="spacer-section"></div>
 
 
 
@@ -382,7 +439,8 @@
             <!-- ########################################################## -->
 
             <section id= "Previous" class="section card" onclick="redirectToPage('./Git - 001.html')">
-                <h2><span class="specialText">Chapter - Previous:<br>
+                <h2>
+                    <span class="highlight">Chapter - Previous:<br>
                     </span> Git - # 001 - Introduction to Git
                 </h2>
 
@@ -398,7 +456,8 @@
             <!-- ########################################################## -->
 
             <section id= "Next" class="section card" onclick="redirectToPage('./Git - 003.html')">
-                <h2><span class="specialText">Chapter - Next:<br>
+                <h2>
+                    <span class="highlight">Chapter - Next:<br>
                     </span> Git - # 003 - Updating Git
                 </h2>
 

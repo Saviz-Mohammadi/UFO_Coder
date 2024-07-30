@@ -93,7 +93,7 @@
 
 
 
-            <div class="spacerSection"></div>
+            <div class="spacer-section"></div>
 
 
 
@@ -111,28 +111,34 @@
                 <h2>Preface</h2>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <!-- TOPIC -->
                 <!-- ############################### -->
                 <p>
-                    <span class="specialText">OVERVIEW</span><br>
+                    <span class="highlight">OVERVIEW</span><br>
                     The majority of programmers and software developers typically begin their coding journey with an introduction to programming using languages like C/C++ and with a "Hello World" application. However, what often remains poorly covered is the concept of how we can controll and instruct the underlying tools such as compilers and linkers and also the environment in which we code to behave in a way that we want them to.
                 </p>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <p>
                     Most introductory programming experiences focus solely on writing code without diving into how that code is transformed into a useful target such as executables and libraries. Often, interaction with compilers, linkers, and other management systems is limited to basic command-line instructions. As a result, many developers proceed to more sufficticated programming concepts and technolgies without understanding the internal workings of these processes or how to customize their environments to better suit their needs and preferences. As a result they often endup making some progress, but eventually face issues.
                 </p>
+                <!-- ############################### -->
+                <!-- TOPIC -->
 
 
 
 
-                <div class="spacerTopic"></div>
+
+
+                <div class="spacer-topic"></div>
+
+
 
 
 
@@ -140,12 +146,12 @@
                 <!-- TOPIC -->
                 <!-- ############################### -->
                 <p>
-                    <span class="specialText">EXAMPLES OF PROBLEMS</span><br>
-                    Many of us spend our time working under a dark cloud without a clear understanding of how things actually operate. We often find ourselves frustrated with tools like <span class="specialText">Visual Studio</span>, <span class="specialText">Xcode</span>, and other integrated environments or even just simple text editors that handle building projects and products for us. When we click that build button, we're left hoping for the best, only to be bombarded with confusing error messages that leave us scratching our heads.
+                    <span class="highlight">EXAMPLES OF PROBLEMS</span><br>
+                    Many of us spend our time working under a dark cloud without a clear understanding of how things actually operate. We often find ourselves frustrated with tools like <span class="highlight">Visual Studio</span>, <span class="highlight">Xcode</span>, and other integrated environments or even just simple text editors that handle building projects and products for us. When we click that build button, we're left hoping for the best, only to be bombarded with confusing error messages that leave us scratching our heads.
                 </p>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <p>
@@ -153,17 +159,23 @@
                 </p>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <p>
                     Integrating third-party libraries adds another layer of complexity. IDEs sometimes detect library locations automatically, but other times they do not and we are left trying to figure that out for ourselves. We also encounter difficulties in specifying the correct flags for compilers and linkers. Testing our code with testing frameworks can be equally frustrating. Finding resources that explain how to package and distribute our software is often a challenge, and if we’re fortunate, we may come across some helpful guidance.
                 </p>
+                <!-- ############################### -->
+                <!-- TOPIC -->
 
 
 
 
-                <div class="spacerTopic"></div>
+
+
+                <div class="spacer-topic"></div>
+
+
 
 
 
@@ -171,17 +183,19 @@
                 <!-- TOPIC -->
                 <!-- ############################### -->
                 <p>
-                    <span class="specialText">CONCLUSION</span><br>
+                    <span class="highlight">CONCLUSION</span><br>
                    I strongly believe this approach is flawed. Understanding your development environment is crucial for effective programming. Without this understanding, you're at the mercy of tools you can't fully control or troubleshoot when things go wrong. This frustration is something I've come to despise about many programming environments. It's as if you're expected to code blindfolded, with little insight into how everything fits together.
                 </p>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <p>
                    These are just a few things that most beginner and even intermediate programmers struggle with. And of course we cannot blame them, no one has thought us how to do these things. This lack of foundational knowledge can lead to frustration when troubleshooting errors or attempting to customize projects. It's essential for developers to grasp these concepts early on, as they form the bedrock of effective programming practices.
                 </p>
+                <!-- ############################### -->
+                <!-- TOPIC -->
             </section>
 
             <!-- ########################################################## -->
@@ -195,7 +209,7 @@
 
 
 
-            <div class="spacerSection"></div>
+            <div class="spacer-section"></div>
 
 
 
@@ -213,28 +227,34 @@
                 <h2>CMake</h2>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <!-- TOPIC -->
                 <!-- ############################### -->
                 <p>
-                    <span class="specialText">OVERVIEW</span><br>
+                    <span class="highlight">OVERVIEW</span><br>
                     You might say, "Well, I can invest some time and effort to learn the tool and its environment", and while that approach is reasonable, it’s important to remember that you’re only becoming proficient with that specific tool and environment. If you’re later required to use a different tool or environment, you’ll have to start the learning process all over again. If you learn Visual Studio, Xcode, or any other specific tool, you're only becoming proficient with that particular tool and its environment.
                 </p>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <p>
                     Not to mention that many programmers aim to write software that runs on multiple systems to reach a broader audience. This ambition brings the same challenges into focus: different environments and tools each have their own compilers, command-line parameters, architectural design choices, and other complexities. Managing this diversity can be quite overwhelming. Fortunately, we have a solution. These problems led to the development of tools like CMake.
                 </p>
+                <!-- ############################### -->
+                <!-- TOPIC -->
 
 
 
 
-                <div class="spacerTopic"></div>
+
+
+                <div class="spacer-topic"></div>
+
+
 
 
 
@@ -242,22 +262,28 @@
                 <!-- TOPIC -->
                 <!-- ############################### -->
                 <p>
-                    <span class="specialText">ABOUT CMAKE</span><br>
-                    CMake serves as a <span class="specialText">cross-platform build system generator</span> designed to mitigate these issues. It enables developers to define their project's behavior and build requirements—such as compiler preferences, folder structures, and library dependencies—in a platform-agnostic manner. CMake accomplishes this by generating native build system files tailored to each target platform (e.g., Makefiles for Unix-like systems, Visual Studio project files for Windows). There's a saying in the community that summarizes CMake's role: <span class="specialText">"CMake is a tool that builds the build system"</span>.
+                    <span class="highlight">ABOUT CMAKE</span><br>
+                    CMake serves as a <span class="highlight">cross-platform build system generator</span> designed to mitigate these issues. It enables developers to define their project's behavior and build requirements—such as compiler preferences, folder structures, and library dependencies—in a platform-agnostic manner. CMake accomplishes this by generating native build system files tailored to each target platform (e.g., Makefiles for Unix-like systems, Visual Studio project files for Windows). There's a saying in the community that summarizes CMake's role: <span class="highlight">"CMake is a tool that builds the build system"</span>.
                 </p>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <p>
                      CMake's developers continued to refine the tool over time, improving documentation and addressing usability issues. As I gradually became more familiar with it, I recognized its power and versatility. However, CMake remains complex and can be difficult to master. Its attempt to accommodate various build systems, C/C++ versions, and platform-specific quirks adds to its learning curve. Moreover, CMake's surge in popularity happened relatively recently, leading to outdated tutorials, articles, and practices that may no longer be valid.
                 </p>
+                <!-- ############################### -->
+                <!-- TOPIC -->
 
 
 
 
-                <div class="spacerTopic"></div>
+
+
+                <div class="spacer-topic"></div>
+
+
 
 
 
@@ -265,9 +291,11 @@
                 <!-- TOPIC -->
                 <!-- ############################### -->
                 <p>
-                    <span class="specialText">CONCLUSION</span><br>
+                    <span class="highlight">CONCLUSION</span><br>
                    My initial experience with CMake was challenging. The error messages were cryptic, and the documentation was lacking, which deterred me from using it for some time. Despite my reluctance, CMake steadily gained traction among developers until it became the de facto standard for generating C/C++ build systems. Despite these challenges, your experience doesn't have to mirror mine. I'm here to help navigate through these complexities and minimize the headaches associated with build system management—at least as much as possible.
                 </p>
+                <!-- ############################### -->
+                <!-- TOPIC -->
             </section>
 
             <!-- ########################################################## -->
@@ -281,7 +309,7 @@
 
 
 
-            <div class="spacerSection"></div>
+            <div class="spacer-section"></div>
 
 
 
@@ -299,15 +327,17 @@
                 <h2>Resources</h2>
 
 
-                <div class="spacerText"></div>
+                <div class="spacer-paragraph"></div>
 
 
                 <!-- TOPIC -->
                 <!-- ############################### -->
                 <p>
-                    <span class="specialText">DOCS AND BOOKS</span><br>
+                    <span class="highlight">DOCS AND BOOKS</span><br>
                     Explaining CMake can be challenging. CMake involves many interconnected elements, commands, and concepts that work together to make the whole system function correctly. Therefore, utilizing reliable resources is crucial. The official <a class="link" href="https://cmake.org/documentation/" target="_blank">CMake documentation</a> is typically the best starting point. Additionally, there are several helpful books available. After exploring various options, I’ve found that <a class="link" href="https://crascit.com/professional-cmake/" target="_blank">"Professional CMake: A Practical Guide"</a> and <a class="link" href="https://keasigmadelta.com/store/landing/the-cmake-tutorial/the-cmake-tutorial/" target="_blank">"The CMake Tutorial"</a> are particularly effective for gaining a thorough understanding.
                 </p>
+                <!-- ############################### -->
+                <!-- TOPIC -->
             </section>
 
             <!-- ########################################################## -->
@@ -321,7 +351,7 @@
 
 
 
-            <div class="spacerSection"></div>
+            <div class="spacer-section"></div>
 
 
 
@@ -336,7 +366,8 @@
             <!-- ########################################################## -->
 
             <section id= "Next" class="section card" onclick="redirectToPage('./CMake - 002.html')">
-                <h2><span class="specialText">Chapter - Next:<br>
+                <h2>
+                    <span class="highlight">Chapter - Next:<br>
                     </span> CMake - # 002 - Installing CMake
                 </h2>
 
