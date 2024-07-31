@@ -7,10 +7,12 @@ function copyCode(button)
   const pre = codeContainer.querySelector('pre').textContent;
 
   navigator.clipboard.writeText(pre)
-  .then(() => {
+  .then(() =>
+  {
     alert('Code copied to clipboard!');
   })
-  .catch(err => {
+  .catch(err =>
+  {
     console.error('Failed to copy code: ', err);
   });
 }

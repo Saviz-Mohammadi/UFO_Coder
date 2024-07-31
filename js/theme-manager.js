@@ -1,11 +1,18 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () =>
+{
   // Function to apply the theme based on localStorage
-  const applyTheme = () => {
+  const applyTheme = () =>
+  {
     const theme = localStorage.getItem('theme');
-    if (theme === 'dark') {
+
+    if (theme === 'dark')
+    {
       document.body.classList.add('darkmode');
       document.body.classList.remove('lightmode');
-    } else {
+    }
+
+    else
+    {
       document.body.classList.add('lightmode');
       document.body.classList.remove('darkmode');
     }
@@ -16,16 +23,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Set up event listener for theme toggle
   const darkModeToggle = document.querySelector('#dark-mode-toggle');
-  if (darkModeToggle) {
-    darkModeToggle.addEventListener('click', () => {
+
+  if (darkModeToggle)
+  {
+    darkModeToggle.addEventListener('click', () =>
+    {
       const currentTheme = localStorage.getItem('theme');
-      if (currentTheme === 'dark') {
+
+      if (currentTheme === 'dark')
+      {
         document.body.classList.remove('darkmode');
         document.body.classList.add('lightmode');
+
         localStorage.setItem('theme', 'light');
-      } else {
+      }
+
+      else
+      {
         document.body.classList.remove('lightmode');
         document.body.classList.add('darkmode');
+
         localStorage.setItem('theme', 'dark');
       }
     });
