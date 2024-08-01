@@ -20,31 +20,26 @@ document.addEventListener('DOMContentLoaded', () =>
 
   // Apply the theme when the DOM is ready
   applyTheme();
-
-  // Set up event listener for theme toggle
-  const darkModeToggle = document.querySelector('#dark-mode-toggle');
-
-  if (darkModeToggle)
-  {
-    darkModeToggle.addEventListener('click', () =>
-    {
-      const currentTheme = localStorage.getItem('theme');
-
-      if (currentTheme === 'dark')
-      {
-        document.body.classList.remove('darkmode');
-        document.body.classList.add('lightmode');
-
-        localStorage.setItem('theme', 'light');
-      }
-
-      else
-      {
-        document.body.classList.remove('lightmode');
-        document.body.classList.add('darkmode');
-
-        localStorage.setItem('theme', 'dark');
-      }
-    });
-  }
 });
+
+
+function toogleTheme()
+{
+  const currentTheme = localStorage.getItem('theme');
+
+  if (currentTheme === 'dark')
+  {
+    document.body.classList.remove('darkmode');
+    document.body.classList.add('lightmode');
+
+    localStorage.setItem('theme', 'light');
+  }
+
+  else
+  {
+    document.body.classList.remove('lightmode');
+    document.body.classList.add('darkmode');
+
+    localStorage.setItem('theme', 'dark');
+  }
+}
