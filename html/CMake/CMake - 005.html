@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+
+<!--
+    File: CMake - 005.html
+    Author: Saviz Mohammadi
+    Date: November 23, 2024
+    Description: This file will provide instructions on how to structure a CMake project.
+    License: MIT
+-->
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>UFO_Coder - CMake #004</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="./../../css/reset.css">
+        <link rel="stylesheet" href="./../../css/styles.css">
+
+        <!-- Js -->
+        <script src="./../../js/theme-manager.js" defer></script>
+        <script src="./../../js/menu.js" defer></script>
+        <script src="./../../js/scroll-to-top.js" defer></script>
+        <script src="./../../js/copy.js" defer></script>
+        <script src="./../../js/date.js" defer></script>
+        <script src="./../../js/page-redirection.js" defer></script>
+    </head>
+
+
+
+
+
+
+
+
+
+
+    <!-- Content -->
+    <body>
+        <header>
+            <h1 id="menu-h1">UFO_Coder</h1>
+
+            <button id="menu-theme-toggle" onclick="toogleTheme()">
+                <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+                    <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm40-83q119-15 199.5-104.5T800-480q0-123-80.5-212.5T520-797v634Z"/>
+                </svg>
+            </button>
+
+            <button id="menu-navigation-toggle" onclick="toggleMenu()">
+                <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+                    <path d="M160-240q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h640q17 0 28.5 11.5T840-280q0 17-11.5 28.5T800-240H160Zm0-200q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h640q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H160Zm0-200q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h640q17 0 28.5 11.5T840-680q0 17-11.5 28.5T800-640H160Z"/>
+                </svg>
+            </button>
+        </header>
+
+
+
+
+
+        <main>
+            <nav id="navigation">
+                <a href="./../../index.html">Home</a>
+                <a href="./../../html/Other/about.html">About</a>
+            </nav>
+
+
+
+
+
+            <!-- Table Of Content -->
+            <!-- ########################################################## -->
+
+            <section id="toc" class="section">
+                <h2>Table of Contents</h2>
+
+                <ul class="toc">
+                    <li><a href="#CMake Language">CMake Language</a></li>
+                    <li><a href="#Basic Commands">Basic Commands</a></li>
+                    <li><a href="#Path Variables">Path Variables</a></li>
+                    <li><a href="#Previous">Chapter - Previous</a></li>
+                    <li><a href="#Next">Chapter - Next</a></li>
+                </ul>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacer-section"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Windows -->
+            <!-- ########################################################## -->
+
+            <section id="CMakeLists.txt" class="section">
+                <h2>CMake language</h2>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    <span class="highlight">OVERVIEW</span><br>
+                    CMake uses its own scripting language, which includes many familiar programming constructs such as variables, functions, macros, conditional logic, loops, and comments. However, it’s important to note that CMake is not a full-fledged programming language, so its functionality is limited. Despite this, understanding CMake is essential before moving forward. Additionally, CMake has a variety of structural elements and syntax, but we'll focus on the basics needed to get by, as many of these features are often more complex than necessary for most use cases.
+                    
+                    Cover: Variables, Lists, Flow controls, Functions, including other files.
+                </p>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacer-section"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- MacOS -->
+            <!-- ########################################################## -->
+
+            <section id="Basic Commands" class="section">
+                <h2>Basic Commands</h2>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    <span class="highlight">OVERVIEW</span><br>
+                    As discussed before, everything in CMake is a command that instructs it to accomplish something. This is where the real fun begins as we will now not cover programmatical syntax, but rather actual project commands that can make a difference to our environment and really start to get a taste for CMake.
+                </p>
+                
+                
+                
+                
+                
+                
+                <div class="spacer-topic"></div>                
+                
+                
+                
+                
+                
+                
+                <p>
+                    <span class="highlight">CMAKE VERSION</span><br>
+                    CMake is frequently updated to support new tools, platforms, and features. To ensure compatibility and specify the version and capabilities you need, you must indicate the desired CMake version and its associated features. The primary way a project specifies the required CMake version and its expected behavior is through the <span class="highlight">cmake_minimum_required()</span> command. This should be the <span class="highlight">first line in the "CMakeLists.txt" file</span> to ensure that the project's requirements are established before any other commands are processed.
+                </p>
+                
+                
+                <div class="spacer-paragraph"></div>
+                
+                
+                <p>
+                    It’s crucial to use this command, as CMake will issue a warning if "cmake_minimum_required()" is not called before other commands. If "CMakeLists.txt" is processed with an older version of CMake, the process will terminate with an error. This ensures that the necessary CMake features are available as the project may rely on these newer features to function correctly.
+                </p>
+                
+                
+                <div class="spacer-paragraph"></div>
+                
+                
+                <p>
+                    The typical syntax for the "cmake_minimum_required()" command is <span class="highlight">cmake_minimum_required(VERSION major.minor[.patch[.tweak]])</span> where the "VERSION" keyword is mandatory, and you must specify at least the "major.minor" section. In most cases, specifying the "patch" and "tweak" versions is unnecessary. Here is an example of how to use this command:
+                </p>
+
+                <!-- CODE -->
+                <!-- ############ -->
+                <div class="spacer-code-title"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
+
+
+                    <code>
+                        <pre>
+<!------------------------><span>cmake_minimum_required(VERSION 3.30.0)
+<!------------------------>
+<!------------------------># Other commands...</span></pre>
+                    </code>
+                </div>
+                <!-- ############ -->
+                <!-- CODE -->
+                
+                
+                
+                
+                
+                
+                <div class="spacer-topic"></div>
+                
+                
+                
+                
+                
+                
+                <p>
+                    <span class="highlight">PROJECT</span><br>
+                    A project can be seen as a logical grouping of files, resources, and other elements that work together to create one or more targets. While most codebases typically have one project per target, it is also possible to nest projects. A top-level project can include subdirectories, each containing its own self-contained projects. This is done through the "project()" command, which must appear after the "cmake_minimum_required()" command.
+                </p>
+                
+                
+                <div class="spacer-paragraph"></div>
+                
+                
+                <p>
+                    Beyond the theoratical definition, the "project()" command performs a set of curcial tasks which are:
+                </p>
+                
+                
+                <div class="spacer-paragraph"></div>
+                
+                
+                <ul class="justified-list-ul">
+                    <li>When CMake first encounters a "project()" command, it finalizes the compiler, linker, and related properties. Any adjustments to these settings after the "project()" command are generally discouraged, as they can lead to inconsistencies.</li>
+
+                    <br>
+
+                    <li>Depending on the generator used, additional files may be created. For example, Visual Studio generators will create a ".sln" solution file for each subproject. The same is true for any other generator used.</li>
+                    
+                    <br>
+
+                    <li>Additional variables will be created per each "project()" call such as "CMAKE_PROJECT_NAME", "PROJECT_NAME", "PROJECT_SOURCE_DIR", and "PROJECT_BINARY_DIR". "CMAKE_PROJECT_NAME" represents the name of the root project and "PROJECT_NAME" the name of the current project. It is common to name targets the same as projects.</li>
+                </ul>
+                
+                
+                <div class="spacer-paragraph"></div>
+                
+                
+                <p>
+                    The "project()" command has the syntax "project("projectName" [VERSION major[.minor[.patch[.tweak]]]] [DESCRIPTION description] [LANGUAGES languageName ...])". The projectName is a required argument and specifies the project’s name, which may include letters, numbers, underscores (_), and hyphens (-). While spaces are not allowed, it’s a good practice to enclose the name in quotes. The "Version" and "Description" are optional arguments. The "Languages" argument specifies the programming languages enabled for the project, such as C, CXX (for C++), Fortran, ASM, CUDA, and others. If multiple languages are used, separate them with spaces. Here is an example of how to use the "project()" command:
+                </p>
+                
+                <!-- CODE -->
+                <!-- ############ -->
+                <div class="spacer-code-title"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
+
+
+                    <code>
+                        <pre>
+<!------------------------><span>cmake_minimum_required(VERSION 3.30.0)
+<!------------------------>
+<!------------------------>project("MyProject" VERSION 0.0.1 DESCRIPTION "A simple project for testing purposes." LANGUAGES CXX)
+<!------------------------>
+<!------------------------># Other commands...</span></pre>
+                    </code>
+                </div>
+                <!-- ############ -->
+                <!-- CODE -->
+                
+                
+                <div class="spacer-paragraph"></div>
+                
+                
+                <p>
+                    Although the project() command might not be the primary focus in our CMakeLists.txt files, it plays a crucial role in ensuring the stability, correctness, and organization of our projects. Therefore, it is recommended to include the project() command in each CMakeLists.txt file that defines a target. This practice helps maintain a consistent and well-structured build environment across your project.
+                </p>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacer-section"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Linux -->
+            <!-- ########################################################## -->
+
+            <section id="Path Variables" class="section">
+                <h2>Path Variables</h2>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    <span class="highlight">PREDEFINED PATHS</span><br>
+                    An important aspect of the project structure is that CMake generates a set of predefined variables tailored to our directory structure and overall project architecture. These variables help us understand how CMake treats our project, while also allowing us to easily reference any resource or location we need. Below is a list of these variables along with their corresponding code snippets:
+                </p>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <!-- CMAKE_SOURCE_DIR -->
+                <p>
+                    <span class="highlight">CMAKE_SOURCE_DIR</span><br>
+                    Represents the top-level source directory of the project where the most root "CMakeLists.txt" file exits. Can be used by taking advantage of the <span class="highlight">${CMAKE_SOURCE_DIR}</span> variable like this:
+                </p>
+
+                <!-- CODE -->
+                <!-- ############ -->
+                <div class="spacer-code-title"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
+
+
+                    <code>
+                        <pre>
+<!------------------------><span>message(STATUS "CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")</span></pre>
+                    </code>
+                </div>
+                <!-- ############ -->
+                <!-- CODE -->
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <!-- CMAKE_CURRENT_SOURCE_DIR -->
+                <p>
+                    <span class="highlight">CMAKE_CURRENT_SOURCE_DIR</span><br>
+                    Represents the source directory currently being processed. In other words, the current "CMakeLists.txt" file that the code is located in. Can be used by taking advantage of the <span class="highlight">${CMAKE_CURRENT_SOURCE_DIR}</span> variable like this:
+                </p>
+
+                <!-- CODE -->
+                <!-- ############ -->
+                <div class="spacer-code-title"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
+
+
+                    <code>
+                        <pre>
+<!------------------------><span>message(STATUS "CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")</span></pre>
+                    </code>
+                </div>
+                <!-- ############ -->
+                <!-- CODE -->
+
+
+                <div class="spacer-paragraph"></div>
+                
+                
+                <!-- CMAKE_BINARY_DIR -->
+                <p>
+                    <span class="highlight">CMAKE_BINARY_DIR</span><br>
+                    Represents the top-level binary directory where build artifacts are placed. Usually the directory from where we run cmake to generate files. Can be used by taking advantage of the <span class="highlight">${CMAKE_BINARY_DIR}</span> variable like this:
+                </p>
+
+                <!-- CODE -->
+                <!-- ############ -->
+                <div class="spacer-code-title"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
+
+
+                    <code>
+                        <pre>
+<!------------------------><span>message(STATUS "CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")</span></pre>
+                    </code>
+                </div>
+                <!-- ############ -->
+                <!-- CODE -->
+
+
+                <div class="spacer-paragraph"></div>
+                
+                <!-- CMAKE_CURRENT_BINARY_DIR -->
+                <p>
+                    <span class="highlight">CMAKE_CURRENT_BINARY_DIR</span><br>
+                    Represents the binary directory currently being processed. Usually pointing to a binary directory that is located in a subdirectory with the same relative path as the submodule itself. Can be used by taking advantage of the <span class="highlight">${CMAKE_CURRENT_BINARY_DIR}</span> variable like this:
+                </p>
+
+                <!-- CODE -->
+                <!-- ############ -->
+                <div class="spacer-code-title"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
+
+
+                    <code>
+                        <pre>
+<!------------------------><span>message(STATUS "CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")</span></pre>
+                    </code>
+                </div>
+                <!-- ############ -->
+                <!-- CODE -->
+
+
+                <div class="spacer-paragraph"></div>
+                
+                
+                <p>
+                    These variables are populated after CMake is called for generation. They are derived from the architecture of your project. Modifying these variables directly, either accidentally or intentionally, can lead to errors, warnings, or restrictions. They are intended to be used as hints for organizing your project rather than being altered. It is recommended to treat them in a read-only format.
+                </p>
+                
+                
+                <div class="spacer-paragraph"></div>
+                
+                
+                <p>
+                    Despite the fact that there are many more variables that related to paths and we will cover more of them as we go, but I usually find the ones mentioned in this section the most used ones even by myself. However, For a comprehensive overview of these and other useful CMake variables, you can refer to their <a class="link" href="https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/Useful-Variables" target="_blank">gitlab page</a>.  
+                </p>
+                
+                
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacer-section"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Previous chapter -->
+            <!-- ########################################################## -->
+
+            <section id= "Previous" class="section card" onclick="redirectToPage('./CMake - 002.html')">
+                <h2>
+                    <span class="highlight">Chapter - Previous:<br>
+                    </span> CMake - # 003 - Updating CMake
+                </h2>
+
+                <p>
+                    In this chapter, we will provide instructions for Updating CMake for various platforms.
+                </p>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+            <!-- Next chapter -->
+            <!-- ########################################################## -->
+
+            <section id= "Next" class="section card" onclick="redirectToPage('./CMake - 004.html')">
+                <h2>
+                    <span class="highlight">Chapter - Next:<br>
+                    </span> CMake - # 005 - Unknown
+                </h2>
+
+                <p>
+                    In this chapter, ...
+                </p>
+            </section>
+
+            <!-- ########################################################## -->
+        </main>
+
+
+
+
+
+        <footer>
+            <p id="current-year" class="copy-year">CMake #003 - </p>
+        </footer>
+
+
+
+
+
+        <button id="scrollToTopButton" class="scroll-to-top" onclick="scrollToTop()">&#9650;</button>
+    </body>
+</html>
