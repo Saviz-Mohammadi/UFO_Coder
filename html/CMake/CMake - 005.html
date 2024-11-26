@@ -81,7 +81,8 @@
                 <ul class="toc">
                     <li><a href="#CMake Language">CMake Language</a></li>
                     <li><a href="#Basic Commands">Basic Commands</a></li>
-                    <li><a href="#Path Variables">Path Variables</a></li>
+                    <li><a href="#Targets">Targets</a></li>
+                    <li><a href="#Comments">Comments</a></li>
                     <li><a href="#Previous">Chapter - Previous</a></li>
                     <li><a href="#Next">Chapter - Next</a></li>
                 </ul>
@@ -161,7 +162,33 @@
 
                 <p>
                     <span class="highlight">OVERVIEW</span><br>
-                    As discussed before, everything in CMake is a command that instructs it to accomplish something. This is where the real fun begins as we will now not cover programmatical syntax, but rather actual project commands that can make a difference to our environment and really start to get a taste for CMake.
+                    Everything in CMake is considered a command that instructs CMake to accomplish something meaningful. In CMake, commands are similar to other languages’ function calls, except that while they support arguments, they do not return values directly. When using CMake commands, arguments are separated from each other by spaces and may be split across multiple lines similar to the following example:
+                </p>
+                
+                <!-- CODE -->
+                <!-- ############ -->
+                <div class="spacer-code-title"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
+
+
+                    <code>
+                        <pre>
+<!------------------------><span>my_command("Argument1" 3000)</span></pre>
+                    </code>
+                </div>
+                <!-- ############ -->
+                <!-- CODE -->
+                
+                
+                <div class="spacer-paragraph"></div>
+                
+                
+                <p>
+                    Command names are case insensitive. In other words, there is no difference between writing the commands with different cases. Typical style conventions varies, but the more common convention these days is to use all lowercase for command names. This is where the real fun begins as we will now not cover programmatical syntax, but rather actual project commands that can make a difference to our environment and really start to get a taste for CMake.
                 </p>
                 
                 
@@ -322,82 +349,52 @@
             <!-- Linux -->
             <!-- ########################################################## -->
 
-            <section id="Path Variables" class="section">
-                <h2>Path Variables</h2>
+            <section id="Targets" class="section">
+                <h2>Targets</h2>
 
 
                 <div class="spacer-paragraph"></div>
 
 
                 <p>
-                    <span class="highlight">PREDEFINED PATHS</span><br>
-                    An important aspect of the project structure is that CMake generates a set of predefined variables tailored to our directory structure and overall project architecture. These variables help us understand how CMake treats our project, while also allowing us to easily reference any resource or location we need. Below is a list of these variables along with their corresponding code snippets:
+                    <span class="highlight">TARGETS AND TYPES</span><br>
+                    While the term "target" can have various interpretations, here's a useful way to think about it: A Target is any kind of useful entity that results from the process of compiling, building, and running our projects. In CMake, there are typically three main types of targets that we encounter and work with. Let's briefly talk about each of them:
                 </p>
-
-
-                <div class="spacer-paragraph"></div>
-
-
-                <!-- CMAKE_SOURCE_DIR -->
-                <p>
-                    <span class="highlight">CMAKE_SOURCE_DIR</span><br>
-                    Represents the top-level source directory of the project where the most root "CMakeLists.txt" file exits. Can be used by taking advantage of the <span class="highlight">${CMAKE_SOURCE_DIR}</span> variable like this:
-                </p>
-
-                <!-- CODE -->
-                <!-- ############ -->
-                <div class="spacer-code-title"></div>
-
-                <div class="code-container">
-                    <div class="ribbon">
-                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
-                    </div>
-
-
-                    <code>
-                        <pre>
-<!------------------------><span>message(STATUS "CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")</span></pre>
-                    </code>
-                </div>
-                <!-- ############ -->
-                <!-- CODE -->
-
-
-                <div class="spacer-paragraph"></div>
-
-
-                <!-- CMAKE_CURRENT_SOURCE_DIR -->
-                <p>
-                    <span class="highlight">CMAKE_CURRENT_SOURCE_DIR</span><br>
-                    Represents the source directory currently being processed. In other words, the current "CMakeLists.txt" file that the code is located in. Can be used by taking advantage of the <span class="highlight">${CMAKE_CURRENT_SOURCE_DIR}</span> variable like this:
-                </p>
-
-                <!-- CODE -->
-                <!-- ############ -->
-                <div class="spacer-code-title"></div>
-
-                <div class="code-container">
-                    <div class="ribbon">
-                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
-                    </div>
-
-
-                    <code>
-                        <pre>
-<!------------------------><span>message(STATUS "CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")</span></pre>
-                    </code>
-                </div>
-                <!-- ############ -->
-                <!-- CODE -->
 
 
                 <div class="spacer-paragraph"></div>
                 
                 
-                <!-- CMAKE_BINARY_DIR -->
+                <ul class="justified-list-ul">
+                    <li><span class="highlight">Executables</span><br>
+                    These are programs that can be run to perform a set of instructions. The most familiar type of target and also the most used one.</li>
+
+                    <br>
+
+                    <li><span class="highlight">Libraries</span><br>
+                    These are reusable code components that can be linked into other projects or programs. Libraries provide functionality that can be shared and utilized across multiple applications. The two most common forms are STATIC and SHARED</li>
+                    
+                    <br>
+
+                    <li><span class="highlight">Custom Targets</span><br>
+                    These targets are defined to run specific commands or perform tasks that can help during the build process. They can be used to run other scripts, copy files and resources, generate code, run tests, create archives, and much more.</li>
+                </ul>
+
+
+
+
+
+
+                <div class="spacer-topic"></div>
+
+
+
+
+
+
                 <p>
-                    <span class="highlight">CMAKE_BINARY_DIR</span><br>
-                    Represents the top-level binary directory where build artifacts are placed. Usually the directory from where we run cmake to generate files. Can be used by taking advantage of the <span class="highlight">${CMAKE_BINARY_DIR}</span> variable like this:
+                    <span class="highlight">EXECUTABLES</span><br>
+                    To add an executable we can use the "add_executable()" command. The command tells CMake to create an executable from a set of source files. The basic form of this command is "add_executable(targetName source1 [source2 ...])". The name may contain letters, numbers, underscores and hyphens. It is common to use "${PROJECT_NAME}" as the name of the executable target. Consider the following simple example:
                 </p>
 
                 <!-- CODE -->
@@ -412,19 +409,31 @@
 
                     <code>
                         <pre>
-<!------------------------><span>message(STATUS "CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")</span></pre>
+<!------------------------><span>cmake_minimum_required(VERSION 3.30.0)
+<!------------------------>
+<!------------------------>project("MyProject" VERSION 0.0.1 DESCRIPTION "A simple project for testing purposes." LANGUAGES CXX)
+<!------------------------>
+<!------------------------>add_executable(${PROJECT_NAME} "${CMAKE_CURRENT_SOURCE_DIR}/main.cpp")</span></pre>
                     </code>
                 </div>
                 <!-- ############ -->
                 <!-- CODE -->
 
 
-                <div class="spacer-paragraph"></div>
+
+
+
+
+                <div class="spacer-topic"></div>
+
+
+
+
+
                 
-                <!-- CMAKE_CURRENT_BINARY_DIR -->
                 <p>
-                    <span class="highlight">CMAKE_CURRENT_BINARY_DIR</span><br>
-                    Represents the binary directory currently being processed. Usually pointing to a binary directory that is located in a subdirectory with the same relative path as the submodule itself. Can be used by taking advantage of the <span class="highlight">${CMAKE_CURRENT_BINARY_DIR}</span> variable like this:
+                    <span class="highlight">LIBRARIES</span><br>
+                    To add a library we can use the "add_library()" command. The command tells CMake to create a library from a set of source files. The basic form of this command is "add_library("library_name" [STATIC | SHARED | MODULE] [source_files])". The name may contain letters, numbers, underscores and hyphens. It is common to use "${PROJECT_NAME}" as the name of the library target. We will also cover the concept of STATIC, SHARED, and MODULE libraries later. Consider the following simple example:
                 </p>
 
                 <!-- CODE -->
@@ -439,29 +448,72 @@
 
                     <code>
                         <pre>
-<!------------------------><span>message(STATUS "CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")</span></pre>
+<!------------------------><span>cmake_minimum_required(VERSION 3.30.0)
+<!------------------------>
+<!------------------------>project("MyProject" VERSION 0.0.1 DESCRIPTION "A simple project for testing purposes." LANGUAGES CXX)
+<!------------------------>
+<!------------------------>add_library(${PROJECT_NAME} STATIC "${CMAKE_CURRENT_SOURCE_DIR}/main.cpp")</span></pre>
                     </code>
                 </div>
                 <!-- ############ -->
+                <!-- CODE -->   
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacer-section"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Linux -->
+            <!-- ########################################################## -->
+
+            <section id="Comments" class="section">
+                <h2>Comments</h2>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    In CMake, comments are used to add explanatory text to your CMake scripts that are ignored during execution. They are helpful for documenting the purpose of specific commands, variables, or sections of the script, making the script more readable and maintainable. Unlike other scripting tools and languages, CMake only supports single line comments that can be used by the "#" symbol like so:
+                </p>
+
                 <!-- CODE -->
+                <!-- ############ -->
+                <div class="spacer-code-title"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
 
 
-                <div class="spacer-paragraph"></div>
-                
-                
-                <p>
-                    These variables are populated after CMake is called for generation. They are derived from the architecture of your project. Modifying these variables directly, either accidentally or intentionally, can lead to errors, warnings, or restrictions. They are intended to be used as hints for organizing your project rather than being altered. It is recommended to treat them in a read-only format.
-                </p>
-                
-                
-                <div class="spacer-paragraph"></div>
-                
-                
-                <p>
-                    Despite the fact that there are many more variables that related to paths and we will cover more of them as we go, but I usually find the ones mentioned in this section the most used ones even by myself. However, For a comprehensive overview of these and other useful CMake variables, you can refer to their <a class="link" href="https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/Useful-Variables" target="_blank">gitlab page</a>.  
-                </p>
-                
-                
+                    <code>
+                        <pre>
+<!------------------------><span># A variable to control the use of unit tests
+<!------------------------>
+<!------------------------>set(enable_unit_tests TRUE)</span></pre>
+                    </code>
+                </div>
+                <!-- ############ -->
+                <!-- CODE -->  
             </section>
 
             <!-- ########################################################## -->
