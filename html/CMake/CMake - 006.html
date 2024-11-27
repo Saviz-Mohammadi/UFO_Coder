@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+
+<!--
+    File: CMake - 006.html
+    Author: Saviz Mohammadi
+    Date: November 23, 2024
+    Description: This file will provide instructions on how to structure a CMake project.
+    License: MIT
+-->
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>UFO_Coder - CMake #006</title>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="./../../css/reset.css">
+        <link rel="stylesheet" href="./../../css/styles.css">
+
+        <!-- Js -->
+        <script src="./../../js/theme-manager.js" defer></script>
+        <script src="./../../js/menu.js" defer></script>
+        <script src="./../../js/scroll-to-top.js" defer></script>
+        <script src="./../../js/copy.js" defer></script>
+        <script src="./../../js/date.js" defer></script>
+        <script src="./../../js/page-redirection.js" defer></script>
+    </head>
+
+
+
+
+
+
+
+
+
+
+    <!-- Content -->
+    <body>
+        <header>
+            <h1 id="menu-h1">UFO_Coder</h1>
+
+            <button id="menu-theme-toggle" onclick="toogleTheme()">
+                <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+                    <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm40-83q119-15 199.5-104.5T800-480q0-123-80.5-212.5T520-797v634Z"/>
+                </svg>
+            </button>
+
+            <button id="menu-navigation-toggle" onclick="toggleMenu()">
+                <svg width="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+                    <path d="M160-240q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h640q17 0 28.5 11.5T840-280q0 17-11.5 28.5T800-240H160Zm0-200q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h640q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H160Zm0-200q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h640q17 0 28.5 11.5T840-680q0 17-11.5 28.5T800-640H160Z"/>
+                </svg>
+            </button>
+        </header>
+
+
+
+
+
+        <main>
+            <nav id="navigation">
+                <a href="./../../index.html">Home</a>
+                <a href="./../../html/Other/about.html">About</a>
+            </nav>
+
+
+
+
+
+            <!-- Table Of Content -->
+            <!-- ########################################################## -->
+
+            <section id="toc" class="section">
+                <h2>Table of Contents</h2>
+
+                <ul class="toc">
+                    <li><a href="#File and Folder architecture">File and Folder architecture</a></li>
+                    <li><a href="#Adding files">Adding files</a></li>
+                    <li><a href="#Adding files">File globing (deprecated)</a></li>
+                    <li><a href="#Comments">Typical errors</a></li>
+                    <li><a href="#Previous">Chapter - Previous</a></li>
+                    <li><a href="#Next">Chapter - Next</a></li>
+                </ul>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacer-section"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Windows -->
+            <!-- ########################################################## -->
+
+            <section id="CMakeLists.txt" class="section">
+                <h2>File and Folder architecture</h2>
+
+
+                <div class="spacer-paragraph"></div>
+
+The key to successfully building and maintaining large software projects is good code structure (or
+architecture). Organizing code into multiple files is a good start, but it’s not enough.
+Imagine having hundreds of files in a single directory, and trying to find what you’re looking for. When
+your project gets so big that the directory listing is overwhelming, then more structure is needed.
+
+
+Now of course this will work, but this is not usually how we would define logical units, because aside from having the files in different locations and directories we do not have a real boundary or logical unit defined that the system can recognize that will help us. therefore, we will discuss this topic further in the next section about libraries.
+
+
+The most logical thing to do with very large projects, is to break their code into modules. Each module
+goes into its own directory. Sometimes a module is broken down into sub-modules, each of which has its
+own sub-directory. How to divide software into logical blocks is an art, and is also beyond the scope of
+this book.
+But what about the build script? Has it also become large and unwieldy? Maybe.
+Using a single CMakeLists.txt file may well make sense for small to medium sized projects. Or, at least,
+there’s no harm in doing so. I’d personally err toward splitting the build scripts into multiple files sooner
+rather than later.
+For very large projects, it makes sense to split the build script into multiple files too
+
+
+
+
+
+
+
+
+
+
+
+So, for example what you can do is to have a cmakelist file for every directory and add them with subdirectory and have variable CMAKE_CURRENT_FILE and then add them with path and variable list.
+
+Of course the better way to define libary targets to make them actually effective.
+
+
+                <p>
+                    <span class="highlight">OVERVIEW</span><br>
+                    No matter whether you're working with executable targets, library targets, unit tests, or any other components, in CMake the structure of your project plays a critical role. Organizing files and folders effectively within the file system impacts nearly every aspect of the build system. Since these files form the foundation of everything, it's essential to discuss project structure before diving into other topics. Let’s take a moment to focus on this important aspect.
+                </p>
+                
+                
+                <div class="spacer-paragraph"></div>
+                
+                
+                <p>
+                    <span class="highlight">OVERVIEW</span><br>
+                    Up unitl now, we have seen how to command CMake to perform various things and we got a taste for it. but, the truth is that we will be working in projects that contain more than just a "main.cpp" file. Some projects may have hundreds or even thousands of implementation files and header files and we need to know how to tell CMake to find them and use them.
+                </p>
+                
+                
+                <div class="spacer-topic"></div>
+                
+                
+                <p>
+                    <span class="highlight">FOLDER STRUCTURE</span><br>
+                    There are usually two ways to structure our project in terms of header files and implementation files. the first method is to create an include and src folder and place every header file inside of the include folder and every implemenation file inisde of the src folder. while this is a valid way I perfer to create an include and src per each of my projects. this way I can resemble the modular feel of a project better by having only files associtaed with a project inisde of them and creating multiple sub folders based off each of the projecs names. Something similar to this example:
+                </p>
+                
+                folder 
+                        src
+                        include
+                        subproject
+                                src
+                                include
+                                ...
+                
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacer-section"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- MacOS -->
+            <!-- ########################################################## -->
+
+            <section id="Basic Commands" class="section">
+                <h2>Adding Files</h2>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    <span class="highlight">OVERVIEW</span><br>
+                    In a typical C++ project we deal with header files and implementation files. In orderd for CMake to successfully process and build a project it must be able to retrive all the files it needs to do so. Now of course, it is possible to specify all the files directly next to the target call such as add_executbale() and add_library() directly. but, tha would just create a lot of clutter and decrease flexibility.
+                </p>
+                
+                
+                <div class="spacer-paragraph"></div>
+                
+                
+                <p>
+                    For this reason we typically use a combination of creating lists of files and commands to specify the files for ecah target. Typically the inclusion of any files can be done via two commands of target_sources() and target_include_diretories(). Let's see both of these in action and what they entail.
+                </p>
+                
+                
+                <div class="spacer-topic"></div>
+
+
+                <p>
+                    <span class="highlight">Header files</span><br>
+                    Header files (*.h and *.hpp) are files that contain symbols and declarations of functions, classes, variables, or other entities. They make it easier to share thees declarations between multiple source files in a project and create an interface for understanding the program better. The way we can let CMake know of their existance is by using the target_include_directories() command like so:
+                </p>
+                
+                <!-- CODE -->
+                <!-- ############ -->
+                <div class="spacer-code-title"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
+
+
+                    <code>
+                        <pre>
+<!------------------------><span>my_command("Argument1" 3000)</span></pre>
+                    </code>
+                </div>
+                <!-- ############ -->
+                <!-- CODE -->
+                
+                
+                <div class="spacer-paragraph"></div>
+                
+                
+                <p>
+                   When you set an include directory using target_include_directories() in CMake, you specify where the compiler should look for header files during preprocessing. The compiler then resolves #include directives using these path. This is the reason why you do not need to include the full relative path to the file and can just specify the file name itself. 
+                </p>
+                
+                
+                <div class="spacer-paragraph"></div>
+                
+                
+                <p>
+                   Header files contain declarations (and possibly inline definitions or templates), not complete, standalone units of code. They are included into source files via the #include directive, and the compiler processes them as part of the source files that include them. This means the compiler only sees and processes header files when compiling the corresponding .cpp files by just pasting them into the cpp file. 
+                </p>
+                
+                
+                <div class="spacer-paragraph"></div>
+                
+                
+                <p>
+                   Due to their nature, In CMake, header files usually don't need to be explicitly added to the target because they are not directly compiled. despite this you will sometimes see them being specified and added to CMake's target_sources() or add_executable()/add_library() commands which primarily deal with compilable files. some environments such as IDEs and text editors may use the list of files here to detect what files need to be shown in the project view. Other than that, this act has no significance and you will see many programmers add other types of files such as txt, image, and others like this as will which the compiler will simply ignore all other types of files that are not compilable.
+                </p>
+                
+                
+                
+                
+                
+                <div class="spacer-topic"></div>                
+                
+                
+                
+                
+                
+                
+                <p>
+                    <span class="highlight">IMPLEMENTATION FILES (*.CPP)</span><br>
+                    Implementation files (*.cpp) contain the actual definintions for functions, classes, and other entities. These files are the main source that need to be compiled by the complier. To add these files we can either directly add them to the target commands such as add_executbale() and add_library() or we can use a seperate command of target_sources() which I actually perfer like this:
+                </p>
+                
+                
+                
+                
+                <div class="spacer-topic"></div>
+                
+                
+                
+                
+                <p>
+                    <span class="highlight">SCOPE VISIBILITY</span><br>
+                    You may have noticed that commands such as target_sources(), target_include_directories() and many others yet to come have a PUBLIC, PRIVATE, INTERFACE argument. These arguments specify the visibilty of the files and resources of the current resources to any other modules or projects that may want to add our current sub-project to themselves and how much they will be able to see.
+                </p>
+                
+                
+                <div class="spacer-paragraph"></div>
+                
+                
+                <ul class="justified-list-ul">
+                    <li><span class="highlight">PRIVATE</span><br>
+                    This means that the files and resources are only visible to the current target and any project or enitity that decides to include the current target will not be able to see these files or interact with them.</li>
+
+                    <br>
+
+                    <li><span class="highlight">PUBLIC</span><br>
+                    This means that the files and resources are visible to the current target and any project or enitity that decides to include the current target will be able to see these files and interact with them.</li>
+                    
+                    <br>
+
+                    <li><span class="highlight">INTERFACE</span><br>
+                    This means that properties and dependencies of the current target are meant to be propagated to other targets that link against it or include it.</li>
+                </ul>
+                
+                <div class="spacer-paragraph"></div>
+                
+                <p>
+                    PRIVATE is usually used for implementation files in target_sources() since no other module or logical unit must be aware of these files and their implementation. PUBLIC is usually used with header files and target_include_diretories() as other modules and logical units that intend on using our project and resources need to be aware of the symbols availble to them.INTERFACE is usually used only with header-only libraries and heavy templated libraries as they mostly do not have any object files.
+                </p>
+                
+                <!-- CODE -->
+                <!-- ############ -->
+                <div class="spacer-code-title"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
+
+
+                    <code>
+                        <pre>
+<!------------------------><span>cmake_minimum_required(VERSION 3.30.0)
+<!------------------------>
+<!------------------------>project("MyProject" VERSION 0.0.1 DESCRIPTION "A simple project for testing purposes." LANGUAGES CXX)
+<!------------------------>
+<!------------------------># Other commands...</span></pre>
+                    </code>
+                </div>
+                <!-- ############ -->
+                <!-- CODE -->
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacer-section"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Linux -->
+            <!-- ########################################################## -->
+
+            <section id="Targets" class="section">
+                <h2>File globing (deprecated)</h2>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    <span class="highlight">WHAT AND WHY?</span><br>
+                    In CMake, performing a **globbing** operation refers to using the `file(GLOB ...)` command to automatically gather a list of files that match a specified pattern, such as `*.cpp` or `*.h`, for example:
+                </p>
+
+
+file(GLOB SOURCES "*.cpp" "*.h")
+add_executable(my_app ${SOURCES})
+
+                <div class="spacer-paragraph"></div>
+                
+                
+                **Convenience**: It automatically includes all files that match a given pattern (e.g., `*.cpp`, `*.h`), reducing the need to manually list files in the `CMakeLists.txt`.
+
+
+### Why **GLOB** is not recommended (and considered outdated):
+1. **CMake doesn't track new or removed files**:
+   - When using `file(GLOB ...)`, CMake does not monitor changes in the source files (e.g., new files added, old ones deleted). As a result, when you add or remove a file, you might have to manually force CMake to regenerate (by removing `CMakeCache.txt` or triggering a full rebuild), which makes it prone to errors.
+   - On the other hand, manually listing source files in CMake ensures that changes in the file list are reflected immediately when CMake is re-run.
+
+2. **Explicit is better than implicit**:
+   - Listing source files explicitly makes the build process more maintainable and clear. When all source files are listed in the `CMakeLists.txt` file, it is easy to see which files are part of the project, making it easier to review and manage.
+
+3. **Complex build dependencies**:
+   - In complex projects, explicitly listing files allows better control over dependencies. Some tools that analyze dependencies can have issues when `GLOB` is used, because the list of files can change dynamically and unpredictably.
+
+4. **Build system reproducibility**:
+   - Globbing might result in inconsistent builds across different machines or environments because file lists can vary depending on the timing of file generation or specific file system configurations.
+
+
+
+                <div class="spacer-topic"></div>
+
+
+
+
+
+
+                <p>
+                    <span class="highlight">CONCLUSION</span><br>
+                    The reason why we cover file globing is because you may still see this method being used somewhere in your career and need to be aware of what it is. also, sometimse it is not bad to have this ability under your belt for a quick setup or to accomplish something simple and fast if you need to.
+                </p>
+
+                <!-- CODE -->
+                <!-- ############ -->
+                <div class="spacer-code-title"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
+
+
+                    <code>
+                        <pre>
+<!------------------------><span>cmake_minimum_required(VERSION 3.30.0)
+<!------------------------>
+<!------------------------>project("MyProject" VERSION 0.0.1 DESCRIPTION "A simple project for testing purposes." LANGUAGES CXX)
+<!------------------------>
+<!------------------------>add_executable(${PROJECT_NAME} "${CMAKE_CURRENT_SOURCE_DIR}/main.cpp")</span></pre>
+                    </code>
+                </div>
+                <!-- ############ -->
+                <!-- CODE -->
+
+
+
+
+
+
+                <div class="spacer-topic"></div>
+
+
+
+
+
+                
+                <p>
+                    <span class="highlight">LIBRARIES</span><br>
+                    To add a library we can use the "add_library()" command. The command tells CMake to create a library from a set of source files. The basic form of this command is "add_library("library_name" [STATIC | SHARED | MODULE] [source_files])". The name may contain letters, numbers, underscores and hyphens. It is common to use "${PROJECT_NAME}" as the name of the library target. We will also cover the concept of STATIC, SHARED, and MODULE libraries later. Consider the following simple example:
+                </p>
+
+                <!-- CODE -->
+                <!-- ############ -->
+                <div class="spacer-code-title"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
+
+
+                    <code>
+                        <pre>
+<!------------------------><span>cmake_minimum_required(VERSION 3.30.0)
+<!------------------------>
+<!------------------------>project("MyProject" VERSION 0.0.1 DESCRIPTION "A simple project for testing purposes." LANGUAGES CXX)
+<!------------------------>
+<!------------------------>add_library(${PROJECT_NAME} STATIC "${CMAKE_CURRENT_SOURCE_DIR}/main.cpp")</span></pre>
+                    </code>
+                </div>
+                <!-- ############ -->
+                <!-- CODE -->   
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacer-section"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Linux -->
+            <!-- ########################################################## -->
+
+            <section id="Comments" class="section">
+                <h2>Comments</h2>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    In CMake, comments are used to add explanatory text to your CMake scripts that are ignored during execution. They are helpful for documenting the purpose of specific commands, variables, or sections of the script, making the script more readable and maintainable. Unlike other scripting tools and languages, CMake only supports single line comments that can be used by the "#" symbol like so:
+                </p>
+
+                <!-- CODE -->
+                <!-- ############ -->
+                <div class="spacer-code-title"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
+
+
+                    <code>
+                        <pre>
+<!------------------------><span># A variable to control the use of unit tests
+<!------------------------>
+<!------------------------>set(enable_unit_tests TRUE)</span></pre>
+                    </code>
+                </div>
+                <!-- ############ -->
+                <!-- CODE -->  
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+            <div class="spacer-section"></div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Previous chapter -->
+            <!-- ########################################################## -->
+
+            <section id= "Previous" class="section card" onclick="redirectToPage('./CMake - 002.html')">
+                <h2>
+                    <span class="highlight">Chapter - Previous:<br>
+                    </span> CMake - # 003 - Updating CMake
+                </h2>
+
+                <p>
+                    In this chapter, we will provide instructions for Updating CMake for various platforms.
+                </p>
+            </section>
+
+            <!-- ########################################################## -->
+
+
+            <!-- Next chapter -->
+            <!-- ########################################################## -->
+
+            <section id= "Next" class="section card" onclick="redirectToPage('./CMake - 004.html')">
+                <h2>
+                    <span class="highlight">Chapter - Next:<br>
+                    </span> CMake - # 005 - Unknown
+                </h2>
+
+                <p>
+                    In this chapter, ...
+                </p>
+            </section>
+
+            <!-- ########################################################## -->
+        </main>
+
+
+
+
+
+        <footer>
+            <p id="current-year" class="copy-year">CMake #003 - </p>
+        </footer>
+
+
+
+
+
+        <button id="scrollToTopButton" class="scroll-to-top" onclick="scrollToTop()">&#9650;</button>
+    </body>
+</html>
