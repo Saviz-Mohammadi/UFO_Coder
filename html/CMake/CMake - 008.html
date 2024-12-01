@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <!--
-    File: CMake - 006.html
+    File: CMake - 007.html
     Author: Saviz Mohammadi
     Date: November 23, 2024
     Description: This file will provide instructions on how to structure a CMake project.
@@ -13,7 +13,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>UFO_Coder - CMake #006</title>
+        <title>UFO_Coder - CMake #007</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
@@ -79,7 +79,7 @@
                 <h2>Table of Contents</h2>
 
                 <ul class="toc">
-                    <li><a href="#File and Folder architecture">File and Folder architecture</a></li>
+                    <li><a href="#Executables">Executables</a></li>
                     <li><a href="#Adding files">Adding files</a></li>
                     <li><a href="#Adding files">File globing (deprecated)</a></li>
                     <li><a href="#Comments">Typical errors</a></li>
@@ -114,46 +114,11 @@
             <!-- ########################################################## -->
 
             <section id="CMakeLists.txt" class="section">
-                <h2>File and Folder architecture</h2>
+                <h2>Executables</h2>
 
-
+talk about the concept of gui executables
+talk about output location path for executables
                 <div class="spacer-paragraph"></div>
-
-Talk about add_subdirectory().
-
-The key to successfully building and maintaining large software projects is good code structure (or
-architecture). Organizing code into multiple files is a good start, but it’s not enough.
-Imagine having hundreds of files in a single directory, and trying to find what you’re looking for. When
-your project gets so big that the directory listing is overwhelming, then more structure is needed.
-
-
-Now of course this will work, but this is not usually how we would define logical units, because aside from having the files in different locations and directories we do not have a real boundary or logical unit defined that the system can recognize that will help us. therefore, we will discuss this topic further in the next section about libraries.
-
-
-The most logical thing to do with very large projects, is to break their code into modules. Each module
-goes into its own directory. Sometimes a module is broken down into sub-modules, each of which has its
-own sub-directory. How to divide software into logical blocks is an art, and is also beyond the scope of
-this book.
-But what about the build script? Has it also become large and unwieldy? Maybe.
-Using a single CMakeLists.txt file may well make sense for small to medium sized projects. Or, at least,
-there’s no harm in doing so. I’d personally err toward splitting the build scripts into multiple files sooner
-rather than later.
-For very large projects, it makes sense to split the build script into multiple files too
-
-
-
-
-
-
-
-
-
-
-
-So, for example what you can do is to have a cmakelist file for every directory and add them with subdirectory and have variable CMAKE_CURRENT_FILE and then add them with path and variable list.
-
-Of course the better way to define libary targets to make them actually effective.
-
 
                 <p>
                     <span class="highlight">OVERVIEW</span><br>
@@ -214,7 +179,7 @@ Of course the better way to define libary targets to make them actually effectiv
             <!-- ########################################################## -->
 
             <section id="Basic Commands" class="section">
-                <h2>Adding Files</h2>
+                <h2>Libraries Overview</h2>
 
 
                 <div class="spacer-paragraph"></div>
@@ -222,7 +187,8 @@ Of course the better way to define libary targets to make them actually effectiv
 
                 <p>
                     <span class="highlight">OVERVIEW</span><br>
-                    In a typical C++ project we deal with header files and implementation files. In orderd for CMake to successfully process and build a project it must be able to retrive all the files it needs to do so. Now of course, it is possible to specify all the files directly next to the target call such as add_executbale() and add_library() directly. but, tha would just create a lot of clutter and decrease flexibility.
+                    A library is a collection of precompiled code that you can use in your programs to avoid having to write common functionalities from scratch. Nobody writes 100% of the code for an app or a project themselves. It’s too much work. Instead, we link our code to
+libraries of code written by others (or ourselves). Libraries that we create our selves are usually refered to as custom libraries or internal libraries. lbirarisa that are made by others are usually called third-party libarrysie or external libarries.
                 </p>
                 
                 
@@ -230,41 +196,30 @@ Of course the better way to define libary targets to make them actually effectiv
                 
                 
                 <p>
-                    For this reason we typically use a combination of creating lists of files and commands to specify the files for ecah target. Typically the inclusion of any files can be done via two commands of target_sources() and target_include_diretories(). Let's see both of these in action and what they entail.
+                    on top of the different libraries types they come in different flavours and formats. However, there are usually two types in the world of C and C++. Static and Shared. Let's take a quick peek at each of them:
                 </p>
                 
                 
                 <div class="spacer-topic"></div>
 
+                <ul class="justified-list-ul">
+                    <li><span class="highlight">STATIC</span><br>
+                    These libraries are linked to your program at compile time. The code from the library is copied into the final executable, which increases the size of the executable but means the program doesn't need the library file at runtime. However, at the same time each process or program instance needs to load the library seperately resuling in massive resource usage if so. These libraries are more convinet to work with as they do not create external dependencies when deploying your project or executable. On Windows we use ".lib" extension (short for library) to represent static librarise and on Unix like systems (Linux/MacOS) we use ".a" extensions (short for archive).</li>
 
-                <p>
-                    <span class="highlight">Header files</span><br>
-                    Header files (*.h and *.hpp) are files that contain symbols and declarations of functions, classes, variables, or other entities. They make it easier to share thees declarations between multiple source files in a project and create an interface for understanding the program better. The way we can let CMake know of their existance is by using the target_include_directories() command like so:
-                </p>
-                
-                <!-- CODE -->
-                <!-- ############ -->
-                <div class="spacer-code-title"></div>
+                    <br>
 
-                <div class="code-container">
-                    <div class="ribbon">
-                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
-                    </div>
-
-
-                    <code>
-                        <pre>
-<!------------------------><span>my_command("Argument1" 3000)</span></pre>
-                    </code>
-                </div>
-                <!-- ############ -->
-                <!-- CODE -->
+                    <li><span class="highlight">SHARED (DYNAMIC)</span><br>
+                    These are linked at runtime, meaning the library code is not included in the executable. Instead, the executable loads the library dynamically when the program starts. This keeps the executable size smaller but requires the library to be present on the system where the program runs. The great thing is that the library code can be shared across multiple processes and programs acrosse the operating system resulting in saving resources and performance. the problem is that each library creates a potential dependcy point which if not fonud results in annoying runtime problems such as project or executable not runnig and not working. On Windows they are represented with ".dll" exetnsion (short for "Dynamic-Link Library") and On MacOS with ".dylib" extension (short for "Dynamic Library") and ".so" on Linux (short for "Shared Object").</li>
+                </ul>
                 
                 
-                <div class="spacer-paragraph"></div>
+                
+                
+                <div class="spacer-topic"></div>
                 
                 
                 <p>
+                   <span class="highlight">Internal library creation</span><br>
                    When you set an include directory using target_include_directories() in CMake, you specify where the compiler should look for header files during preprocessing. The compiler then resolves #include directives using these path. This is the reason why you do not need to include the full relative path to the file and can just specify the file name itself. 
                 </p>
                 
@@ -359,6 +314,11 @@ Of course the better way to define libary targets to make them actually effectiv
                 </div>
                 <!-- ############ -->
                 <!-- CODE -->
+                
+                <p>
+                    One last thing that I want to mention is that there are 3 stages to creating and using libraries. First we need to instruct CMake to create the library from the source files that was provided to it. If the library is internal or made by us, then we will tell CMake. If the library is third-party or external, then the programmer either has the code or if they made the library, then this step is already completed. the second step is finding the library. in internal ones, CMake already knows it exists and where to find it since we instructed it to, in exetrnal ones CMake needs to be instructed with various methods on how to find it and bring it into the project tree structure. Last but not least we need to instruct CMake on how to add it to a target for using. all of this will be covered inidivdually for internal and external libraries.
+                </p>
+                
             </section>
 
             <!-- ########################################################## -->
@@ -387,15 +347,15 @@ Of course the better way to define libary targets to make them actually effectiv
             <!-- ########################################################## -->
 
             <section id="Targets" class="section">
-                <h2>File globing (deprecated)</h2>
+                <h2>Internal Libraries</h2>
 
 
                 <div class="spacer-paragraph"></div>
 
 
                 <p>
-                    <span class="highlight">WHAT AND WHY?</span><br>
-                    In CMake, performing a **globbing** operation refers to using the `file(GLOB ...)` command to automatically gather a list of files that match a specified pattern, such as `*.cpp` or `*.h`, for example:
+                    <span class="highlight">Creation phase</span><br>
+                    For STATIC lbiraries this is an easy process. Due to the nature of Static libraries and the fact that they will be incoporated into the final target without any additional dependencies, All we have to do to is tell cmake the source files and instruct it to create the library as static and we will be done with the creation phase. The following code is a small representation of this process:
                 </p>
 
 
@@ -403,62 +363,12 @@ file(GLOB SOURCES "*.cpp" "*.h")
 add_executable(my_app ${SOURCES})
 
                 <div class="spacer-paragraph"></div>
-                
-                
-                **Convenience**: It automatically includes all files that match a given pattern (e.g., `*.cpp`, `*.h`), reducing the need to manually list files in the `CMakeLists.txt`.
-
-
-### Why **GLOB** is not recommended (and considered outdated):
-1. **CMake doesn't track new or removed files**:
-   - When using `file(GLOB ...)`, CMake does not monitor changes in the source files (e.g., new files added, old ones deleted). As a result, when you add or remove a file, you might have to manually force CMake to regenerate (by removing `CMakeCache.txt` or triggering a full rebuild), which makes it prone to errors.
-   - On the other hand, manually listing source files in CMake ensures that changes in the file list are reflected immediately when CMake is re-run.
-
-2. **Explicit is better than implicit**:
-   - Listing source files explicitly makes the build process more maintainable and clear. When all source files are listed in the `CMakeLists.txt` file, it is easy to see which files are part of the project, making it easier to review and manage.
-
-3. **Complex build dependencies**:
-   - In complex projects, explicitly listing files allows better control over dependencies. Some tools that analyze dependencies can have issues when `GLOB` is used, because the list of files can change dynamically and unpredictably.
-
-4. **Build system reproducibility**:
-   - Globbing might result in inconsistent builds across different machines or environments because file lists can vary depending on the timing of file generation or specific file system configurations.
-
-
-
-                <div class="spacer-topic"></div>
-
-
-
-
 
 
                 <p>
-                    <span class="highlight">CONCLUSION</span><br>
-                    The reason why we cover file globing is because you may still see this method being used somewhere in your career and need to be aware of what it is. also, sometimse it is not bad to have this ability under your belt for a quick setup or to accomplish something simple and fast if you need to.
+                    For dynamic libraries this is a different story.
                 </p>
 
-                <!-- CODE -->
-                <!-- ############ -->
-                <div class="spacer-code-title"></div>
-
-                <div class="code-container">
-                    <div class="ribbon">
-                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
-                    </div>
-
-
-                    <code>
-                        <pre>
-<!------------------------><span>cmake_minimum_required(VERSION 3.30.0)
-<!------------------------>
-<!------------------------>project("MyProject" VERSION 0.0.1 DESCRIPTION "A simple project for testing purposes." LANGUAGES CXX)
-<!------------------------>
-<!------------------------>add_executable(${PROJECT_NAME} "${CMAKE_CURRENT_SOURCE_DIR}/main.cpp")</span></pre>
-                    </code>
-                </div>
-                <!-- ############ -->
-                <!-- CODE -->
-
-
 
 
 
@@ -471,8 +381,8 @@ add_executable(my_app ${SOURCES})
 
                 
                 <p>
-                    <span class="highlight">LIBRARIES</span><br>
-                    To add a library we can use the "add_library()" command. The command tells CMake to create a library from a set of source files. The basic form of this command is "add_library("library_name" [STATIC | SHARED | MODULE] [source_files])". The name may contain letters, numbers, underscores and hyphens. It is common to use "${PROJECT_NAME}" as the name of the library target. We will also cover the concept of STATIC, SHARED, and MODULE libraries later. Consider the following simple example:
+                    <span class="highlight">Finding and using it</span><br>
+                    When it comes to Static libraries they are already found and embedded into the final target. Therefore there is no need to do anything. For Sharde libraries however, this is a different story.
                 </p>
 
                 <!-- CODE -->
@@ -495,7 +405,13 @@ add_executable(my_app ${SOURCES})
                     </code>
                 </div>
                 <!-- ############ -->
-                <!-- CODE -->   
+                <!-- CODE -->
+                
+                <p>
+                    <span class="highlight">Conclusion</span><br>
+                    As you can see shared libraries are really tricky. this is also the reasno why most programmers tend to avoid them as much as possible. the hassel is just too great for the prize.
+                </p>
+                   
             </section>
 
             <!-- ########################################################## -->
@@ -524,35 +440,63 @@ add_executable(my_app ${SOURCES})
             <!-- ########################################################## -->
 
             <section id="Comments" class="section">
-                <h2>Comments</h2>
+                <h2>Project architecture using sub-libraries</h2>
 
 
                 <div class="spacer-paragraph"></div>
 
 
                 <p>
-                    In CMake, comments are used to add explanatory text to your CMake scripts that are ignored during execution. They are helpful for documenting the purpose of specific commands, variables, or sections of the script, making the script more readable and maintainable. Unlike other scripting tools and languages, CMake only supports single line comments that can be used by the "#" symbol like so:
+                    In the previous section we saw how to have multiple folders with different parts and files. Howeever, the problem with such an approach is that while we ourselves can visually see and distinguish the different parts, to the compiler it just looks like there is still one massive logical unit or target (executable) that has a lot of files in different locations. so, while it may seem as if we seperated our project into different parts and cleaned it, we do not recieve any major benefints from the compiler side which means that if one of thees files are changed the whole logical unit or target needs to be recompiled again with all files. this can be very slow depending on the size of the project.
+                </p>
+                
+                
+                
+                <p>
+                    Another way to sub-divide a large project is to split it into sub-libraries where every subdirectory and its set of modules are considerede an independet library target. This works very well. But, isn’t it overkill? Besides, isn't the point of libariers to be reusable? Yes, creating libraries is unnecessary for code that isn’t shared, but dividing a project into libraries could have the following benefits:
                 </p>
 
-                <!-- CODE -->
-                <!-- ############ -->
-                <div class="spacer-code-title"></div>
-
-                <div class="code-container">
-                    <div class="ribbon">
-                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
-                    </div>
+                For starters, linking a few static libraries is faster than linking the same code from
+hundreds of individual object files. The reduced linking time alone could make this a no-brainer for very
+large projects.
 
 
-                    <code>
-                        <pre>
-<!------------------------><span># A variable to control the use of unit tests
-<!------------------------>
-<!------------------------>set(enable_unit_tests TRUE)</span></pre>
-                    </code>
-                </div>
-                <!-- ############ -->
-                <!-- CODE -->  
+using sub-libraries is more flexible and provides clearer structure. Every sub-project is nicely
+encapsulated, with clear boundaries between all the program’s various modules. 
+
+
+
+on top of all of this, each target lbirary is conisdered an individual logical unit that won't need to be recompiled if some other part is changed. this can save a tremendous amount of time when compiling.
+
+
+
+Example code:
+
+cmake_minimum_required(VERSION 3.24)
+project(hello_world)
+
+#Dependencies
+add_subdirectory(libs/Greetings)
+
+# Our Project
+set(SOURCE_FILES
+
+ Main.cpp)
+
+add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+target_link_libraries(${PROJECT_NAME} Greetings)
+libs/Greetings/CMakeLists.txt
+
+cmake_minimum_required(VERSION 3.24)
+project(Greetings)
+
+# Our Project
+set(SOURCE_FILES
+
+ src/Hello.cpp)
+
+add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES})
+target_include_directories(${PROJECT_NAME} PUBLIC include)
             </section>
 
             <!-- ########################################################## -->
@@ -563,6 +507,64 @@ add_executable(my_app ${SOURCES})
 
 
 
+
+
+
+<!-- Linux -->
+            <!-- ########################################################## -->
+
+            <section id="Comments" class="section">
+                <h2>External libraries</h2>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    This is probably the part that makes programmers hate cmake and probably the reason why cmake is hated so much and has a bad reputation. Until now, things were not that bad, creating libraries seems very much intuitive, but that is because we were in charge of creating them and knew how we wanted to build them as in static or dynamic, and we also were able to find them and had control what to do in each scenario and to copy shared libraries to the executable locations if need be. But, what if we are not the ones creating the libraries and dont know and have no contorl about the details of their achitecture?
+
+I am talking about external libraries. chances are if you are developing in C++ that you would use exetranla or also named third-party libraies extensively. and for good reason, there is a lot of things to worry about and we need some kind of interface or API to handle things for us such as talking to the Operating System and using the underliying capabilties. You may have heard about libarries that others have created such as fmt, lnohman, Boost, and many others and always wanted to use them.
+
+So, why is this part so hated? it is because of the enurmouse different ways to add and incluide exetrnal library dependecies. We have find_package(), fetchcontentt(), and adding diretly to source. And each have their problmes. On top of this we need to worry about static and dynamic concepts, and what happens after.
+                </p>
+
+
+            </section>
+
+            <!-- ########################################################## -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- Linux -->
+            <!-- ########################################################## -->
+
+            <section id="Comments" class="section">
+                <h2>Common errors</h2>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <p>
+                    As we know the compiler takes our source files and converts them into object files (.o for linux and macos and .obj for windows). The linker will attempt to bring togeter all of the generated object files and combine them into a meaningful target such as an executable or even another big unified library. However, most of the time our code contains symbols that are not entirely defined, either because we did not define them in the implementation file or we included a header file that only contains symbols. The problem is that when the complire transforms each of our implementation files into an object file there will be holes and missing parts (references) where we attempted to use the symbolic code but could not find the actual definintion at that moment of time. So, what ends up happening is that when the linker tries to bring togeter all of these files it must also make sure that anything that is missing or is half reference and has missing parts must be fully found and taken care of before being able to make the final big thing. it accomplishes this by looking at the symbol such as "Foo" funciton and then trying its best to find the actual defininiot part by looking at every other object file it knows off. If it is succesful everything goes well. But, if it cannot find it it will throw a linker error which are those annoynig errors everyone is afaird of that usually says "Was not able to find symbol or edifininot.." or something in those lines. In these cases this means that something went wrong and we were not able to fully provide a good way for the linker to find our library. when such things happen, it uaslly means the part of our code that include the library is wrong. and honestly except for having experience there is no way to fully say what the problem is. but, here are some common ways that I have found most likely is the problem:
+
+
+
+you forgot to use target_include_library().
+                </p>
+
+
+            </section>
+
+            <!-- ########################################################## -->
 
 
 

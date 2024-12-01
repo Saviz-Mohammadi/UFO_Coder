@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <!--
-    File: CMake - 006.html
+    File: CMake - 005.html
     Author: Saviz Mohammadi
     Date: November 23, 2024
     Description: This file will provide instructions on how to structure a CMake project.
@@ -13,7 +13,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>UFO_Coder - CMake #006</title>
+        <title>UFO_Coder - CMake #004</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
@@ -79,10 +79,10 @@
                 <h2>Table of Contents</h2>
 
                 <ul class="toc">
-                    <li><a href="#File and Folder architecture">File and Folder architecture</a></li>
-                    <li><a href="#Adding files">Adding files</a></li>
-                    <li><a href="#Adding files">File globing (deprecated)</a></li>
-                    <li><a href="#Comments">Typical errors</a></li>
+                    <li><a href="#CMake Language">CMake Language</a></li>
+                    <li><a href="#Basic Commands">Basic Commands</a></li>
+                    <li><a href="#Targets">Targets</a></li>
+                    <li><a href="#Comments">Comments</a></li>
                     <li><a href="#Previous">Chapter - Previous</a></li>
                     <li><a href="#Next">Chapter - Next</a></li>
                 </ul>
@@ -114,78 +114,18 @@
             <!-- ########################################################## -->
 
             <section id="CMakeLists.txt" class="section">
-                <h2>File and Folder architecture</h2>
+                <h2>CMake language</h2>
 
 
                 <div class="spacer-paragraph"></div>
 
-Talk about add_subdirectory().
-
-The key to successfully building and maintaining large software projects is good code structure (or
-architecture). Organizing code into multiple files is a good start, but it’s not enough.
-Imagine having hundreds of files in a single directory, and trying to find what you’re looking for. When
-your project gets so big that the directory listing is overwhelming, then more structure is needed.
-
-
-Now of course this will work, but this is not usually how we would define logical units, because aside from having the files in different locations and directories we do not have a real boundary or logical unit defined that the system can recognize that will help us. therefore, we will discuss this topic further in the next section about libraries.
-
-
-The most logical thing to do with very large projects, is to break their code into modules. Each module
-goes into its own directory. Sometimes a module is broken down into sub-modules, each of which has its
-own sub-directory. How to divide software into logical blocks is an art, and is also beyond the scope of
-this book.
-But what about the build script? Has it also become large and unwieldy? Maybe.
-Using a single CMakeLists.txt file may well make sense for small to medium sized projects. Or, at least,
-there’s no harm in doing so. I’d personally err toward splitting the build scripts into multiple files sooner
-rather than later.
-For very large projects, it makes sense to split the build script into multiple files too
-
-
-
-
-
-
-
-
-
-
-
-So, for example what you can do is to have a cmakelist file for every directory and add them with subdirectory and have variable CMAKE_CURRENT_FILE and then add them with path and variable list.
-
-Of course the better way to define libary targets to make them actually effective.
-
 
                 <p>
                     <span class="highlight">OVERVIEW</span><br>
-                    No matter whether you're working with executable targets, library targets, unit tests, or any other components, in CMake the structure of your project plays a critical role. Organizing files and folders effectively within the file system impacts nearly every aspect of the build system. Since these files form the foundation of everything, it's essential to discuss project structure before diving into other topics. Let’s take a moment to focus on this important aspect.
+                    CMake uses its own scripting language, which includes many familiar programming constructs such as variables, functions, macros, conditional logic, loops, and comments. However, it’s important to note that CMake is not a full-fledged programming language, so its functionality is limited. Despite this, understanding CMake is essential before moving forward. Additionally, CMake has a variety of structural elements and syntax, but we'll focus on the basics needed to get by, as many of these features are often more complex than necessary for most use cases.
+                    
+                    Cover: Variables, Lists, Flow controls, Functions, including other files.
                 </p>
-                
-                
-                <div class="spacer-paragraph"></div>
-                
-                
-                <p>
-                    <span class="highlight">OVERVIEW</span><br>
-                    Up unitl now, we have seen how to command CMake to perform various things and we got a taste for it. but, the truth is that we will be working in projects that contain more than just a "main.cpp" file. Some projects may have hundreds or even thousands of implementation files and header files and we need to know how to tell CMake to find them and use them.
-                </p>
-                
-                
-                <div class="spacer-topic"></div>
-                
-                
-                <p>
-                    <span class="highlight">FOLDER STRUCTURE</span><br>
-                    There are usually two ways to structure our project in terms of header files and implementation files. the first method is to create an include and src folder and place every header file inside of the include folder and every implemenation file inisde of the src folder. while this is a valid way I perfer to create an include and src per each of my projects. this way I can resemble the modular feel of a project better by having only files associtaed with a project inisde of them and creating multiple sub folders based off each of the projecs names. Something similar to this example:
-                </p>
-                
-                folder 
-                        src
-                        include
-                        subproject
-                                src
-                                include
-                                ...
-                
             </section>
 
             <!-- ########################################################## -->
@@ -214,7 +154,7 @@ Of course the better way to define libary targets to make them actually effectiv
             <!-- ########################################################## -->
 
             <section id="Basic Commands" class="section">
-                <h2>Adding Files</h2>
+                <h2>Basic Commands</h2>
 
 
                 <div class="spacer-paragraph"></div>
@@ -222,24 +162,7 @@ Of course the better way to define libary targets to make them actually effectiv
 
                 <p>
                     <span class="highlight">OVERVIEW</span><br>
-                    In a typical C++ project we deal with header files and implementation files. In orderd for CMake to successfully process and build a project it must be able to retrive all the files it needs to do so. Now of course, it is possible to specify all the files directly next to the target call such as add_executbale() and add_library() directly. but, tha would just create a lot of clutter and decrease flexibility.
-                </p>
-                
-                
-                <div class="spacer-paragraph"></div>
-                
-                
-                <p>
-                    For this reason we typically use a combination of creating lists of files and commands to specify the files for ecah target. Typically the inclusion of any files can be done via two commands of target_sources() and target_include_diretories(). Let's see both of these in action and what they entail.
-                </p>
-                
-                
-                <div class="spacer-topic"></div>
-
-
-                <p>
-                    <span class="highlight">Header files</span><br>
-                    Header files (*.h and *.hpp) are files that contain symbols and declarations of functions, classes, variables, or other entities. They make it easier to share thees declarations between multiple source files in a project and create an interface for understanding the program better. The way we can let CMake know of their existance is by using the target_include_directories() command like so:
+                    Everything in CMake is considered a command that instructs CMake to accomplish something meaningful. In CMake, commands are similar to other languages’ function calls, except that while they support arguments, they do not return values directly. When using CMake commands, arguments are separated from each other by spaces and may be split across multiple lines similar to the following example:
                 </p>
                 
                 <!-- CODE -->
@@ -265,24 +188,9 @@ Of course the better way to define libary targets to make them actually effectiv
                 
                 
                 <p>
-                   When you set an include directory using target_include_directories() in CMake, you specify where the compiler should look for header files during preprocessing. The compiler then resolves #include directives using these path. This is the reason why you do not need to include the full relative path to the file and can just specify the file name itself. 
+                    Command names are case insensitive. In other words, there is no difference between writing the commands with different cases. Typical style conventions varies, but the more common convention these days is to use all lowercase for command names. This is where the real fun begins as we will now not cover programmatical syntax, but rather actual project commands that can make a difference to our environment and really start to get a taste for CMake.
                 </p>
                 
-                
-                <div class="spacer-paragraph"></div>
-                
-                
-                <p>
-                   Header files contain declarations (and possibly inline definitions or templates), not complete, standalone units of code. They are included into source files via the #include directive, and the compiler processes them as part of the source files that include them. This means the compiler only sees and processes header files when compiling the corresponding .cpp files by just pasting them into the cpp file. 
-                </p>
-                
-                
-                <div class="spacer-paragraph"></div>
-                
-                
-                <p>
-                   Due to their nature, In CMake, header files usually don't need to be explicitly added to the target because they are not directly compiled. despite this you will sometimes see them being specified and added to CMake's target_sources() or add_executable()/add_library() commands which primarily deal with compilable files. some environments such as IDEs and text editors may use the list of files here to detect what files need to be shown in the project view. Other than that, this act has no significance and you will see many programmers add other types of files such as txt, image, and others like this as will which the compiler will simply ignore all other types of files that are not compilable.
-                </p>
                 
                 
                 
@@ -296,9 +204,47 @@ Of course the better way to define libary targets to make them actually effectiv
                 
                 
                 <p>
-                    <span class="highlight">IMPLEMENTATION FILES (*.CPP)</span><br>
-                    Implementation files (*.cpp) contain the actual definintions for functions, classes, and other entities. These files are the main source that need to be compiled by the complier. To add these files we can either directly add them to the target commands such as add_executbale() and add_library() or we can use a seperate command of target_sources() which I actually perfer like this:
+                    <span class="highlight">CMAKE VERSION</span><br>
+                    CMake is frequently updated to support new tools, platforms, and features. To ensure compatibility and specify the version and capabilities you need, you must indicate the desired CMake version and its associated features. The primary way a project specifies the required CMake version and its expected behavior is through the <span class="highlight">cmake_minimum_required()</span> command. This should be the <span class="highlight">first line in the "CMakeLists.txt" file</span> to ensure that the project's requirements are established before any other commands are processed.
                 </p>
+                
+                
+                <div class="spacer-paragraph"></div>
+                
+                
+                <p>
+                    It’s crucial to use this command, as CMake will issue a warning if "cmake_minimum_required()" is not called before other commands. If "CMakeLists.txt" is processed with an older version of CMake, the process will terminate with an error. This ensures that the necessary CMake features are available as the project may rely on these newer features to function correctly.
+                </p>
+                
+                
+                <div class="spacer-paragraph"></div>
+                
+                
+                <p>
+                    The typical syntax for the "cmake_minimum_required()" command is <span class="highlight">cmake_minimum_required(VERSION major.minor[.patch[.tweak]])</span> where the "VERSION" keyword is mandatory, and you must specify at least the "major.minor" section. In most cases, specifying the "patch" and "tweak" versions is unnecessary. Here is an example of how to use this command:
+                </p>
+
+                <!-- CODE -->
+                <!-- ############ -->
+                <div class="spacer-code-title"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
+
+
+                    <code>
+                        <pre>
+<!------------------------><span>cmake_minimum_required(VERSION 3.30.0)
+<!------------------------>
+<!------------------------># Other commands...</span></pre>
+                    </code>
+                </div>
+                <!-- ############ -->
+                <!-- CODE -->
+                
+                
                 
                 
                 
@@ -308,9 +254,19 @@ Of course the better way to define libary targets to make them actually effectiv
                 
                 
                 
+                
+                
                 <p>
-                    <span class="highlight">SCOPE VISIBILITY</span><br>
-                    You may have noticed that commands such as target_sources(), target_include_directories() and many others yet to come have a PUBLIC, PRIVATE, INTERFACE argument. These arguments specify the visibilty of the files and resources of the current resources to any other modules or projects that may want to add our current sub-project to themselves and how much they will be able to see.
+                    <span class="highlight">PROJECT</span><br>
+                    A project can be seen as a logical grouping of files, resources, and other elements that work together to create one or more targets. While most codebases typically have one project per target, it is also possible to nest projects. A top-level project can include subdirectories, each containing its own self-contained projects. This is done through the "project()" command, which must appear after the "cmake_minimum_required()" command.
+                </p>
+                
+                
+                <div class="spacer-paragraph"></div>
+                
+                
+                <p>
+                    Beyond the theoratical definition, the "project()" command performs a set of curcial tasks which are:
                 </p>
                 
                 
@@ -318,24 +274,23 @@ Of course the better way to define libary targets to make them actually effectiv
                 
                 
                 <ul class="justified-list-ul">
-                    <li><span class="highlight">PRIVATE</span><br>
-                    This means that the files and resources are only visible to the current target and any project or enitity that decides to include the current target will not be able to see these files or interact with them.</li>
+                    <li>When CMake first encounters a "project()" command, it finalizes the compiler, linker, and related properties. Any adjustments to these settings after the "project()" command are generally discouraged, as they can lead to inconsistencies.</li>
 
                     <br>
 
-                    <li><span class="highlight">PUBLIC</span><br>
-                    This means that the files and resources are visible to the current target and any project or enitity that decides to include the current target will be able to see these files and interact with them.</li>
+                    <li>Depending on the generator used, additional files may be created. For example, Visual Studio generators will create a ".sln" solution file for each subproject. The same is true for any other generator used.</li>
                     
                     <br>
 
-                    <li><span class="highlight">INTERFACE</span><br>
-                    This means that properties and dependencies of the current target are meant to be propagated to other targets that link against it or include it.</li>
+                    <li>Additional variables will be created per each "project()" call such as "CMAKE_PROJECT_NAME", "PROJECT_NAME", "PROJECT_SOURCE_DIR", and "PROJECT_BINARY_DIR". "CMAKE_PROJECT_NAME" represents the name of the root project and "PROJECT_NAME" the name of the current project. It is common to name targets the same as projects.</li>
                 </ul>
+                
                 
                 <div class="spacer-paragraph"></div>
                 
+                
                 <p>
-                    PRIVATE is usually used for implementation files in target_sources() since no other module or logical unit must be aware of these files and their implementation. PUBLIC is usually used with header files and target_include_diretories() as other modules and logical units that intend on using our project and resources need to be aware of the symbols availble to them.INTERFACE is usually used only with header-only libraries and heavy templated libraries as they mostly do not have any object files.
+                    The "project()" command has the syntax "project("projectName" [VERSION major[.minor[.patch[.tweak]]]] [DESCRIPTION description] [LANGUAGES languageName ...])". The projectName is a required argument and specifies the project’s name, which may include letters, numbers, underscores (_), and hyphens (-). While spaces are not allowed, it’s a good practice to enclose the name in quotes. The "Version" and "Description" are optional arguments. The "Languages" argument specifies the programming languages enabled for the project, such as C, CXX (for C++), Fortran, ASM, CUDA, and others. If multiple languages are used, separate them with spaces. Here is an example of how to use the "project()" command:
                 </p>
                 
                 <!-- CODE -->
@@ -359,6 +314,14 @@ Of course the better way to define libary targets to make them actually effectiv
                 </div>
                 <!-- ############ -->
                 <!-- CODE -->
+                
+                
+                <div class="spacer-paragraph"></div>
+                
+                
+                <p>
+                    Although the project() command might not be the primary focus in our CMakeLists.txt files, it plays a crucial role in ensuring the stability, correctness, and organization of our projects. Therefore, it is recommended to include the project() command in each CMakeLists.txt file that defines a target. This practice helps maintain a consistent and well-structured build environment across your project.
+                </p>
             </section>
 
             <!-- ########################################################## -->
@@ -387,40 +350,38 @@ Of course the better way to define libary targets to make them actually effectiv
             <!-- ########################################################## -->
 
             <section id="Targets" class="section">
-                <h2>File globing (deprecated)</h2>
+                <h2>Targets</h2>
 
 
                 <div class="spacer-paragraph"></div>
 
 
                 <p>
-                    <span class="highlight">WHAT AND WHY?</span><br>
-                    In CMake, performing a **globbing** operation refers to using the `file(GLOB ...)` command to automatically gather a list of files that match a specified pattern, such as `*.cpp` or `*.h`, for example:
+                    <span class="highlight">TARGETS AND TYPES</span><br>
+                    While the term "target" can have various interpretations, here's a useful way to think about it: A Target is any kind of useful entity that results from the process of compiling, building, and running our projects. In CMake, there are typically three main types of targets that we encounter and work with. Let's briefly talk about each of them:
                 </p>
 
-
-file(GLOB SOURCES "*.cpp" "*.h")
-add_executable(my_app ${SOURCES})
 
                 <div class="spacer-paragraph"></div>
                 
                 
-                **Convenience**: It automatically includes all files that match a given pattern (e.g., `*.cpp`, `*.h`), reducing the need to manually list files in the `CMakeLists.txt`.
+                <ul class="justified-list-ul">
+                    <li><span class="highlight">Executables</span><br>
+                    These are programs that can be run to perform a set of instructions. The most familiar type of target and also the most used one.</li>
+
+                    <br>
+
+                    <li><span class="highlight">Libraries</span><br>
+                    These are reusable code components that can be linked into other projects or programs. Libraries provide functionality that can be shared and utilized across multiple applications. The two most common forms are STATIC and SHARED</li>
+                    
+                    <br>
+
+                    <li><span class="highlight">Custom Targets</span><br>
+                    These targets are defined to run specific commands or perform tasks that can help during the build process. They can be used to run other scripts, copy files and resources, generate code, run tests, create archives, and much more.</li>
+                </ul>
 
 
-### Why **GLOB** is not recommended (and considered outdated):
-1. **CMake doesn't track new or removed files**:
-   - When using `file(GLOB ...)`, CMake does not monitor changes in the source files (e.g., new files added, old ones deleted). As a result, when you add or remove a file, you might have to manually force CMake to regenerate (by removing `CMakeCache.txt` or triggering a full rebuild), which makes it prone to errors.
-   - On the other hand, manually listing source files in CMake ensures that changes in the file list are reflected immediately when CMake is re-run.
 
-2. **Explicit is better than implicit**:
-   - Listing source files explicitly makes the build process more maintainable and clear. When all source files are listed in the `CMakeLists.txt` file, it is easy to see which files are part of the project, making it easier to review and manage.
-
-3. **Complex build dependencies**:
-   - In complex projects, explicitly listing files allows better control over dependencies. Some tools that analyze dependencies can have issues when `GLOB` is used, because the list of files can change dynamically and unpredictably.
-
-4. **Build system reproducibility**:
-   - Globbing might result in inconsistent builds across different machines or environments because file lists can vary depending on the timing of file generation or specific file system configurations.
 
 
 
@@ -432,8 +393,8 @@ add_executable(my_app ${SOURCES})
 
 
                 <p>
-                    <span class="highlight">CONCLUSION</span><br>
-                    The reason why we cover file globing is because you may still see this method being used somewhere in your career and need to be aware of what it is. also, sometimse it is not bad to have this ability under your belt for a quick setup or to accomplish something simple and fast if you need to.
+                    <span class="highlight">EXECUTABLES</span><br>
+                    To add an executable we can use the "add_executable()" command. The command tells CMake to create an executable from a set of source files. The basic form of this command is "add_executable(targetName source1 [source2 ...])". The name may contain letters, numbers, underscores and hyphens. It is common to use "${PROJECT_NAME}" as the name of the executable target. Consider the following simple example:
                 </p>
 
                 <!-- CODE -->

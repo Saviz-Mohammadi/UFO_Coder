@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
 <!--
-    File: CMake - 004.html
+    File: CMake - 003.html
     Author: Saviz Mohammadi
-    Date: November 23, 2024
-    Description: This file will provide instructions on how to structure a CMake project.
+    Date: June 30, 2024
+    Description: This file will provide instructions on how to update CMake for various platforms.
     License: MIT
 -->
 
@@ -13,7 +13,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>UFO_Coder - CMake #004</title>
+        <title>UFO_Coder - CMake #003</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
@@ -79,9 +79,9 @@
                 <h2>Table of Contents</h2>
 
                 <ul class="toc">
-                    <li><a href="#CMakeLists.txt">CMakeLists.txt</a></li>
-                    <li><a href="#Folder Structure">Folder Structure</a></li>
-                    <li><a href="#Path Variables">Path Variables</a></li>
+                    <li><a href="#Windows">Update - Windows</a></li>
+                    <li><a href="#MacOS">Update - MacOS</a></li>
+                    <li><a href="#Linux">Update - Linux</a></li>
                     <li><a href="#Previous">Chapter - Previous</a></li>
                     <li><a href="#Next">Chapter - Next</a></li>
                 </ul>
@@ -112,16 +112,18 @@
             <!-- Windows -->
             <!-- ########################################################## -->
 
-            <section id="CMakeLists.txt" class="section">
-                <h2>CMakeLists.txt</h2>
+            <section id="Windows" class="section">
+                <h2>Update - Windows</h2>
 
 
                 <div class="spacer-paragraph"></div>
 
 
+                <!-- TOPIC -->
+                <!-- ############################### -->
                 <p>
-                    <span class="highlight">OVERVIEW</span><br>
-                    The first step in working with CMake is understanding how to structure your CMake projects effectively. In this chapter, we will explore the recommended project structure and see where to place your files for optimal organization and clarity. CMake operates by reading the contents of a <span class="highlight">CMakeLists.txt</span> file and executing the instructions within it. This file serves as a platform-independent description of the entire project, which CMake then converts into platform-specific build tool project files.
+                    <span id= "CHECK-WINDOWS" class="highlight">UPDATING CMAKE</span><br>
+                    CMake may already be installed on your system for several reasons: your operating system might come with CMake pre-installed, a software tool you installed could include CMake as a dependency, or you might have installed CMake previously and forgotten about it. Regardless of the reason, if you want to to update CMake on a Windows machine, then the best way is to download a newer variation of the official installer from the <a class="link" href="https://cmake.org/download/" target="_blank">CMake download</a> page.
                 </p>
 
 
@@ -129,16 +131,10 @@
 
 
                 <p>
-                    Despite its name, the "CMakeLists.txt" file is simply a <span class="highlight">regular text file</span> that developers can edit using their preferred text editor or development environment. This file dictates all the actions CMake will perform. It is considered good practice to place the "CMakeLists.txt" file in the <span class="highlight">root directory</span> of your current project. Doing so, helps create a well-organized structure. This approach simplifies the process of organizing your files within the project folder structure and locating these files and referring to them in your "CMakeLists.txt" file.
+                    Once downloaded, double-click the installer and follow the installer wizard to update CMake. After completing the update, you should be able to use the newer CMake version from the command line.
                 </p>
-                
-                
-                <div class="spacer-paragraph"></div>
-                
-                
-                <p>
-                    It is possible to have multiple subprojects, each with its own "CMakeLists.txt" file, organized within subdirectories of a top-level project. However, it's important to note that simply having a "CMakeLists.txt" file does not necessarily indicate the creation of a new project, as this depends on the specific instructions and code inside the file. That said, it's often the case that an additional "CMakeLists.txt" file is included with the intention of defining a new subproject, as there is typically no reason to include one otherwise.
-                </p>
+                <!-- ############################### -->
+                <!-- TOPIC -->
             </section>
 
             <!-- ########################################################## -->
@@ -166,78 +162,85 @@
             <!-- MacOS -->
             <!-- ########################################################## -->
 
-            <section id="Folder Structure" class="section">
-                <h2>Folder Structure</h2>
+            <section id="MacOS" class="section">
+                <h2>Update - MacOS</h2>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+                <p>
+                    <span id= "CHECK-MACOS" class="highlight">UPDATING CMAKE</span><br>
+                    CMake may already be installed on your system for several reasons: your operating system might come with CMake pre-installed, a software tool you installed could include CMake as a dependency, or you might have installed CMake previously and forgotten about it. Regardless of the reason, if you want to update CMake for your MacOS machine, then you first need to make sure that the Homebrew package manager is up to date by using the  following command:
+                </p>
+
+
+                <div class="spacer-paragraph"></div>
+
+
+                <!-- CODE -->
+                <!-- ############ -->
+                <p>Zsh - Bash</p>
+
+                <div class="spacer-code-title"></div>
+
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
+
+
+                    <code>
+                        <pre>
+<!------------------------><span>brew update</span></pre>
+                    </code>
+                </div>
+                <!-- ############ -->
+                <!-- CODE -->
 
 
                 <div class="spacer-paragraph"></div>
 
 
                 <p>
-                    <span class="highlight">DIRECTORIES</span><br>
-                    Directories are a fundamental aspect of any programming language's build environment. The organization of files and how you access them can determine whether a project succeeds or fails. In CMake, two key locations are particularly important: the source directory and the binary directory. Below is a description of each:
+                    Once the process is finished, you can update CMake using the following command:
                 </p>
-                
-                
+
+
                 <div class="spacer-paragraph"></div>
 
 
-                <ul class="justified-list-ul">
-                    <li><span class="highlight">Source Directory</span><br>
-                    This is where your "CMakeLists.txt" file resides, along with all the necessary source files such as <span class="highlight">"*.cpp"</span>, <span class="highlight">"*.hpp"</span>, and any other resources or files that make up your project and will be targeted for compilation. It is also recommended to place your Git repository in this directory, as these are the files you want to track and version.</li>
+                <!-- CODE -->
+                <!-- ############ -->
+                <p>Zsh - Bash</p>
 
-                    <br>
+                <div class="spacer-code-title"></div>
 
-                    <li><span class="highlight">Binary Directory</span><br>
-                    This directory is where all the build artifacts are generated. It is often referred to as the build directory. CMake uses the term "binary directory," but "build directory" is commonly used among developers. This directory contains the output from the build process, such as executables, libraries, test results, and packages. It also holds temporary files and caches created by the build tool (e.g., Unix Makefiles, Visual Studio) and other tools like CTest and CPack.</li>
-                </ul>
+                <div class="code-container">
+                    <div class="ribbon">
+                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+                    </div>
+
+
+                    <code>
+                        <pre>
+<!------------------------><span>brew upgrade cmake</span></pre>
+                    </code>
+                </div>
+                <!-- ############ -->
+                <!-- CODE -->
 
 
                 <div class="spacer-paragraph"></div>
 
 
                 <p>
-                    CMake generates a special file called `CMakeCache.txt` in the binary directory to store information for reuse in subsequent runs. The build tool's project files (e.g., Xcode or Visual Studio project files, Makefiles) are also created in the binary directory. Typically, developers don’t need to worry about `CMakeCache.txt` or other temporary files, but you might want to control where build artifacts are placed. This will be discussed later.
+                    If you’re not using the Homebrew package manager, you can also obtain newer binaries for the macOS platform by visiting the <a class="link" href="https://cmake.org/download/" target="_blank">CMake download</a> page. You can then run the installers and update CMake.
                 </p>
-                
-                
-                
-                
-                
-                
-                <div class="spacer-topic"></div>
-                
-                
-                
-                
-                
-                
-                <p>
-                    <span class="highlight">STRUCTURE</span><br>
-                    When starting a project, you need to decide where the build directory and the source directory should be located. There are two approaches: in-source and out-of-source. Let’s explore what each approach entails and which one is perferred over the other:
-                </p>
-                
-                
-                <div class="spacer-paragraph"></div>
-                
-                
-                <ul class="justified-list-ul">
-                    <li><span class="highlight">In-Source Builds</span><br>
-                    In this approach, the source and build directories are the same. Build outputs, temporary files, caches, and build artifacts end up mixed with the source files. This can lead to a cluttered directory structure, making it harder to manage the source files and increasing the risk of build outputs overwriting source files. This practice is generally discouraged.</li>
-
-                    <br>
-
-                    <li><span class="highlight">Out-of-Source Builds</span><br>
-                    This approach tries to keep the source and build directories separate. This method avoids the issues associated with in-source builds by maintaining a clear separation between source files and build outputs. It also enables the creation of multiple build directories for the same source directory. Therfore, this method is generally encouraged.</li>
-                </ul>
-                
-                
-                <div class="spacer-paragraph"></div>
-                
-                
-                <p>
-                    Now of course, how we go about using the "Out-of-Source" method and attempt to create seperation varies betwene programmers. Some developers choose to place the build directory as a subdirectory within the source directory. While this still maintains separation, it keeps the build files close to the source. This can be a good compromise if you prefer having the build artifacts in a known location relative to the source directory but still want to avoid the issues of in-source builds.
-                </p>
+                <!-- ############################### -->
+                <!-- TOPIC -->
             </section>
 
             <!-- ########################################################## -->
@@ -265,54 +268,41 @@
             <!-- Linux -->
             <!-- ########################################################## -->
 
-            <section id="Path Variables" class="section">
-                <h2>Path Variables</h2>
+            <section id="Linux" class="section">
+                <h2>Update - Linux</h2>
 
 
                 <div class="spacer-paragraph"></div>
 
 
+                <!-- TOPIC -->
+                <!-- ############################### -->
                 <p>
-                    <span class="highlight">PREDEFINED PATHS</span><br>
-                    An important aspect of the project structure is that CMake generates a set of predefined variables tailored to our directory structure and overall project architecture. These variables help us understand how CMake treats our project, while also allowing us to easily reference any resource or location we need. Below is a list of these variables along with their corresponding code snippets:
+                    <span class="highlight">UPDATING CMAKE</span><br>
+                    Updating CMake on a Linux-based system can be a bit challenging due to the variety of distributions, each with its own package manager. To make things easier, I’ve provided the necessary commands for the most commonly used distributions below (Please remember to update the package manager first before attempting to update CMake itself):
                 </p>
+                <!-- ############################### -->
+                <!-- TOPIC -->
 
 
-                <div class="spacer-paragraph"></div>
 
 
-                <!-- CMAKE_SOURCE_DIR -->
+
+
+                <div class="spacer-topic"></div>
+
+
+
+
+
+
+                <!-- TOPIC -->
+                <!-- ############################### -->
+
+                <!-- DEBIAN/UBUNTU -->
                 <p>
-                    <span class="highlight">CMAKE_SOURCE_DIR</span><br>
-                    Represents the top-level source directory of the project where the most root "CMakeLists.txt" file exits. Can be used by taking advantage of the <span class="highlight">${CMAKE_SOURCE_DIR}</span> variable like this:
-                </p>
-
-                <!-- CODE -->
-                <!-- ############ -->
-                <div class="spacer-code-title"></div>
-
-                <div class="code-container">
-                    <div class="ribbon">
-                        <button class="copy-button" onclick="copyCode(this)">Copy</button>
-                    </div>
-
-
-                    <code>
-                        <pre>
-<!------------------------><span>message(STATUS "CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")</span></pre>
-                    </code>
-                </div>
-                <!-- ############ -->
-                <!-- CODE -->
-
-
-                <div class="spacer-paragraph"></div>
-
-
-                <!-- CMAKE_CURRENT_SOURCE_DIR -->
-                <p>
-                    <span class="highlight">CMAKE_CURRENT_SOURCE_DIR</span><br>
-                    Represents the source directory currently being processed. In other words, the current "CMakeLists.txt" file that the code is located in. Can be used by taking advantage of the <span class="highlight">${CMAKE_CURRENT_SOURCE_DIR}</span> variable like this:
+                    <span class="highlight">DEBIAN/UBUNTU</span><br>
+                    For Debian-based distributions, which use the <span class="highlight">apt</span> (<span class="highlight">Advanced Package Tool</span>) package manager, use the following command to update the package manager and CMake simultaneously:
                 </p>
 
                 <!-- CODE -->
@@ -327,7 +317,7 @@
 
                     <code>
                         <pre>
-<!------------------------><span>message(STATUS "CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")</span></pre>
+<!------------------------><span>sudo apt update && sudo apt upgrade cmake -y</span></pre>
                     </code>
                 </div>
                 <!-- ############ -->
@@ -335,12 +325,12 @@
 
 
                 <div class="spacer-paragraph"></div>
-                
-                
-                <!-- CMAKE_BINARY_DIR -->
+
+
+                <!-- Fedora -->
                 <p>
-                    <span class="highlight">CMAKE_BINARY_DIR</span><br>
-                    Represents the top-level binary directory where build artifacts are placed. Usually the directory from where we run cmake to generate files. Can be used by taking advantage of the <span class="highlight">${CMAKE_BINARY_DIR}</span> variable like this:
+                    <span class="highlight">Fedora</span><br>
+                    For Fedora-based distributions, which use the <span class="highlight">dnf</span> (<span class="highlight">Dandified YUM</span>) package manager, use the following command to update the package manager and CMake simultaneously:
                 </p>
 
                 <!-- CODE -->
@@ -355,7 +345,7 @@
 
                     <code>
                         <pre>
-<!------------------------><span>message(STATUS "CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")</span></pre>
+<!------------------------><span>sudo dnf check-update --refresh && sudo dnf upgrade cmake -y</span></pre>
                     </code>
                 </div>
                 <!-- ############ -->
@@ -363,11 +353,12 @@
 
 
                 <div class="spacer-paragraph"></div>
-                
-                <!-- CMAKE_CURRENT_BINARY_DIR -->
+
+
+                <!-- Arch -->
                 <p>
-                    <span class="highlight">CMAKE_CURRENT_BINARY_DIR</span><br>
-                    Represents the binary directory currently being processed. Usually pointing to a binary directory that is located in a subdirectory with the same relative path as the submodule itself. Can be used by taking advantage of the <span class="highlight">${CMAKE_CURRENT_BINARY_DIR}</span> variable like this:
+                    <span class="highlight">Arch</span><br>
+                    For Arch-based distributions, which use the <span class="highlight">pacman</span> package manager, use the following command to update the package manager and CMake simultaneously:
                 </p>
 
                 <!-- CODE -->
@@ -382,29 +373,14 @@
 
                     <code>
                         <pre>
-<!------------------------><span>message(STATUS "CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")</span></pre>
+<!------------------------><span>sudo pacman -Sy cmake --noconfirm</span></pre>
                     </code>
                 </div>
                 <!-- ############ -->
                 <!-- CODE -->
 
-
-                <div class="spacer-paragraph"></div>
-                
-                
-                <p>
-                    These variables are populated after CMake is called for generation. They are derived from the architecture of your project. Modifying these variables directly, either accidentally or intentionally, can lead to errors, warnings, or restrictions. They are intended to be used as hints for organizing your project rather than being altered. It is recommended to treat them in a read-only format.
-                </p>
-                
-                
-                <div class="spacer-paragraph"></div>
-                
-                
-                <p>
-                    Despite the fact that there are many more variables that related to paths and we will cover more of them as we go, but I usually find the ones mentioned in this section the most used ones even by myself. However, For a comprehensive overview of these and other useful CMake variables, you can refer to their <a class="link" href="https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/Useful-Variables" target="_blank">gitlab page</a>.  
-                </p>
-                
-                
+                <!-- ############################### -->
+                <!-- TOPIC -->
             </section>
 
             <!-- ########################################################## -->
@@ -435,11 +411,11 @@
             <section id= "Previous" class="section card" onclick="redirectToPage('./CMake - 002.html')">
                 <h2>
                     <span class="highlight">Chapter - Previous:<br>
-                    </span> CMake - # 003 - Updating CMake
+                    </span> CMake - # 002 - Installing CMake
                 </h2>
 
                 <p>
-                    In this chapter, we will provide instructions for Updating CMake for various platforms.
+                    In this chapter, we will provide instructions for Installing CMake for various platforms.
                 </p>
             </section>
 
@@ -452,11 +428,11 @@
             <section id= "Next" class="section card" onclick="redirectToPage('./CMake - 004.html')">
                 <h2>
                     <span class="highlight">Chapter - Next:<br>
-                    </span> CMake - # 005 - Unknown
+                    </span> CMake - # 004 - Project structure
                 </h2>
 
                 <p>
-                    In this chapter, ...
+                    In this chapter, we will provide instructions for structuring a CMake project.
                 </p>
             </section>
 
